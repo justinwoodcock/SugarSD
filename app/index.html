@@ -9,10 +9,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
     <!-- build:css css/vendor.css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
-    <link rel="stylesheet" href="fonts/ui-base.css" />
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) css/style.css -->
     <link rel="stylesheet" href="css/style.css">
@@ -32,8 +31,11 @@
                             <img src="images/sugar-sd-logo.png">
                         </a>
                     </div>
-                    <div id="header-actions" class="pull-right">
-                        <nav class="collapse navbar-collapse pull-left">
+                    <div id="header-actions" class="pull-right" ng-init="navbarCollapsed=false">
+                        <button type="button" class="navbar-toggle" ng-click="navbarCollapsed=!navbarCollapsed">
+                                <i class="icon-menu"></i>
+                            </button>
+                        <nav class="collapse navbar-collapse pull-left" collapse="navbarCollapsed">
                             <ul class="nav navbar-nav">
                                 <li><a href="#panel-sugaring" du-smooth-scroll du-scrollspy>What is Sugaring</a></li>
                                 <li><a href="#panel-products" du-smooth-scroll du-scrollspy>Products</a></li>
@@ -41,9 +43,10 @@
                                 <li><a href="#panel-services" du-smooth-scroll du-scrollspy>Services</a></li>
                                 <li><a href="#panel-preparation" du-smooth-scroll du-scrollspy>Preparation</a></li>
                                 <li><a href="#panel-contact" du-smooth-scroll du-scrollspy>Contact</a></li>
+                                <li ng-show="navbarCollapsed=false"><a href="https://www.schedulicity.com/Scheduling/Default.aspx?business=SSDQQG#/services" target="_blank">Book an Appointment</a></li>
                             </ul>
                         </nav>
-                        <button class="btn btn-primary book-appointment pull-left" ng-click="openBooking()">Book an Appointment</button>
+                        <button class="btn btn-primary book-appointment pull-left" ng-show="navbarCollapsed=true" ng-click="openBooking()">Book an Appointment</button>
                     </div>
                 </div>
             </div>
@@ -56,6 +59,7 @@
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
     <!-- build:js js/vendor.js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
@@ -63,7 +67,6 @@
     <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
     <script src="bower_components/ng-parallax/angular-parallax.min.js"></script>
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) js/app.js -->
     <script src="js/app.js"></script>
