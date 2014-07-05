@@ -12,7 +12,7 @@ uiBase.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         url: '/',
         views: {
             content: {
-                templateUrl: '/views/main/partial.main.html',
+                templateUrl: 'views/main/partial.main.html',
                 controller: 'MainController'
             }
         }

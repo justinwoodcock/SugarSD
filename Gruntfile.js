@@ -287,9 +287,9 @@ module.exports = function(grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         '*.html',
-                        'views/{,*/}*.html',
-                        'images/{,*/}*.{webp}',
-                        'fonts/*'
+                        'views/**/*.html',
+                        'images/*',
+                        'font/*'
                     ]
                 }, {
                     expand: true,
@@ -315,8 +315,8 @@ module.exports = function(grunt) {
                 'compass'
             ],
             dist: [
-                'compass:dist',
-                'imagemin'
+                'compass:dist' //,
+                //'imagemin'
             ]
         },
 
@@ -369,7 +369,7 @@ module.exports = function(grunt) {
         'copy:dist',
         'cssmin',
         'uglify',
-        'rev',
+        //'rev',
         'usemin',
         'htmlmin'
     ]);
