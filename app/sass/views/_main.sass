@@ -1,12 +1,12 @@
 .sugar-panel
     position: relative
     width: 100%
-    height: 100%
+    height: 150%
     overflow: hidden
     border-bottom: 1px solid rgba(0, 0, 0, 0.7)
     .img-parallax
-        min-width: 100%
         min-height: 100%
+        width: auto
     .sugar-content
         width: 100%
         min-height: 30%
@@ -23,11 +23,8 @@
             line-height: 165%
 
 #panel-home
-    //background-image: url(../images/storefront.jpg)
-    .img-parallax
-        height: 100%
+    height: 100%
     .sugar-content
-        padding-top: 60px
         h1
             margin: 30px 0 0 0
 
@@ -37,12 +34,15 @@
 #panel-products
     .img-parallax
         position: absolute
-        left: -15%
+        left: -35%
+        width: 135%
         bottom: 0
 
 #panel-contact
     .leaflet-top.leaflet-left
-        bottom: 0
+        bottom: 62px
+        left: auto
+        right: 50px !important
     #map
         width: 100%
         height: 100%

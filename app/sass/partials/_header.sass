@@ -6,24 +6,38 @@ header
     position: fixed
     z-index: 99
     #logo
-        height: 62px
+        max-height: 62px
         margin: 10px 0 12px 0
         display: inline-block
         img
-            height: 100%
+            max-height: 100%
+            max-width: 100%
     #header-actions
         height: $header-height
+    .navbar-toggle
+        margin: 18px 0 0 0
+        border-radius: 3px
+        i
+            font-size: 20px
+            color: $theme-primary
+        &:hover
+            background: $theme-primary
+            i
+                color: white
     .navbar-collapse.collapse
-        height: 100% !important
+        width: 100%
         margin-bottom: 0
+        margin-right: 0
+        padding-right: 0
         .nav
             height: 100%
+            width: 100%
             li
                 height: 100%
                 a
                     color: $theme-secondary
                     margin-top: 23px
-                    font-size: 14px
+                    font-size: 12px
                     padding: 8px 14px
                     border: 1px solid transparent
                     &:hover
@@ -33,6 +47,6 @@ header
                         //border-bottom: 2px solid darken($theme-secondary, 5%)
                         //border-radius: 2px
     .book-appointment
-        margin-top: 23px
-        font-size: 14px
+        margin: 23px 0 0 20px
+        font-size: 12px
         display: none

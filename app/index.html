@@ -25,17 +25,17 @@
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="pull-left">
-                        <a href="#panel-home" du-smooth-scroll du-scrollspy id="logo">
-                            <img src="images/sugar-sd-logo.png">
-                        </a>
-                    </div>
+                <div class="col-xs-4 col-xs-offset-4 col-sm-offset-0 col-sm-3 col-md-2">
+                    <a href="#panel-home" du-smooth-scroll du-scrollspy id="logo">
+                        <img src="images/sugar-sd-logo.png">
+                    </a>
+                </div>
+                <div class="col-xs-4 col-sm-9 col-md-10 clearfix">
                     <div id="header-actions" class="pull-right" ng-init="navbarCollapsed=false">
                         <button type="button" class="navbar-toggle" ng-click="navbarCollapsed=!navbarCollapsed">
-                                <i class="icon-menu"></i>
-                            </button>
-                        <nav class="collapse navbar-collapse pull-left" collapse="navbarCollapsed">
+                            <i class="icon-menu"></i>
+                        </button>
+                        <nav class="collapse navbar-collapse pull-left" collapse="navbarCollapsed=true">
                             <ul class="nav navbar-nav">
                                 <li><a href="#panel-sugaring" du-smooth-scroll du-scrollspy>What is Sugaring</a></li>
                                 <li><a href="#panel-products" du-smooth-scroll du-scrollspy>Products</a></li>
@@ -55,6 +55,19 @@
     <div ui-view="content" id="content">
         <!-- This is the real app content -->
     </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-8 copyright">
+                    ©2014 Sugar San Diego All rights reserved.
+                </div>
+                <div class="col-xs-4">
+                    <button class="btn btn-primary book-appointment pull-right" ng-click="openBooking()">Book an Appointment</button>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>

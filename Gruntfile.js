@@ -163,11 +163,11 @@ module.exports = function(grunt) {
                 generatedImagesDir: '.tmp/images/generated',
                 imagesDir: '<%= config.app %>/images',
                 javasDir: '<%= config.app %>/js',
-                fontsDir: '<%= config.app %>/fonts',
+                fontsDir: '<%= config.app %>/font',
                 importPath: '<%= config.app %>/bower_components',
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
-                httpFontsPath: '/fonts',
+                httpFontsPath: '/font',
                 relativeAssets: false,
                 assetCacheBuster: false,
                 raw: 'Sass::Script::Number.precision = 10\n'
@@ -192,7 +192,7 @@ module.exports = function(grunt) {
                         '<%= config.dist %>/js/{,*/}*.js',
                         '<%= config.dist %>/css/{,*/}*.css',
                         '<%= config.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-                        '<%= config.dist %>/fonts/*'
+                        '<%= config.dist %>/font/*'
                     ]
                 }
             }
@@ -289,7 +289,7 @@ module.exports = function(grunt) {
                         '*.html',
                         'views/**/*.html',
                         'images/*',
-                        'font/*'
+                    'font/*'
                     ]
                 }, {
                     expand: true,
