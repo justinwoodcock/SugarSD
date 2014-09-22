@@ -25,7 +25,7 @@ module.exports = function(grunt) {
                 tasks: ['bowerInstall']
             },
             js: {
-                files: ['<%= config.app %>/js/{,*/}*.js'],
+                files: ['<%= config.app %>/components/**/*.js', '<%= config.app %>/app.js'],
                 tasks: ['newer:jshint:all'],
                 options: {
                     livereload: true
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
                 tasks: ['newer:jshint:test', 'karma']
             },
             compass: {
-                files: ['<%= config.app %>/sass/{,*/}*.{scss,sass}'],
+                files: ['<%= config.app %>/components/**/*.{scss,sass}', '<%= config.app %>/style.sass'],
                 tasks: ['compass:server', 'autoprefixer']
             },
             gruntfile: {
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
             options: {
                 port: 9000,
                 // Change this to '0.0.0.0' to access the server from outside.
-                hostname: 'localhost',
+                hostname: 'sugarsd.dev',
                 livereload: 35729
             },
             livereload: {
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
         // Make sure our code is beautiful.
         // jsbeautifier is currently setup to look at our JS, HTML & CSS.
         jsbeautifier: {
-            files: ['<%= config.app %>/js/**/*.js', '<%= config.app %>/css/*.css', '<%= config.app %>/views/**/*.html'],
+            files: ['<%= config.app %>/js/**/*.js', '<%= config.app %>/css/*.css', '<%= config.app %>/**/*.html'],
             options: {}
         },
 
@@ -137,7 +137,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '.tmp/css/',
-                    src: '{,*/}*.css',
+                    src: 'css/{,*/}*.css',
                     dest: '.tmp/config/'
                 }]
             }
@@ -150,7 +150,7 @@ module.exports = function(grunt) {
                 ignorePath: '<%= config.app %>/'
             },
             sass: {
-                src: ['<%= config.app %>/sass/{,*/}*.{scss,sass}'],
+                src: ['<%= config.app %>/components/{,*/}*.{scss,sass}'],
                 ignorePath: '<%= config.app %>/bower_components/'
             }
         },
@@ -158,11 +158,11 @@ module.exports = function(grunt) {
         // Compiles Sass to CSS and generates necessary files if requested
         compass: {
             options: {
-                sassDir: '<%= config.app %>/sass',
+                sassDir: '<%= config.app %>',
                 cssDir: '.tmp/css',
                 generatedImagesDir: '.tmp/images/generated',
                 imagesDir: '<%= config.app %>/images',
-                javasDir: '<%= config.app %>/js',
+                javasDir: '<%= config.app %>/components',
                 fontsDir: '<%= config.app %>/font',
                 importPath: '<%= config.app %>/bower_components',
                 httpImagesPath: '/images',
@@ -189,10 +189,9 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     src: [
-                        '<%= config.dist %>/js/{,*/}*.js',
-                        '<%= config.dist %>/css/{,*/}*.css',
-                        '<%= config.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-                        '<%= config.dist %>/font/*'
+                        '<%= config.dist %>/**/*.js',
+                        '<%= config.dist %>/**/*.css',
+                        '<%= config.dist %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
                     ]
                 }
             }
@@ -255,16 +254,15 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= config.dist %>',
-                    src: ['*.html', 'views/{,*/}*.html'],
+                    src: ['*.html', 'components/{,*/}*.html'],
                     dest: '<%= config.dist %>'
                 }]
             }
         },
 
-        // ngmin tries to make the code safe for minification automatically by
-        // using the Angular long form for dependency injection. It doesn't work on
-        // things like resolve or inject so those have to be done manually.
-        ngmin: {
+        // ng-annotate makes code safe for minification by using the Angular long
+        // form for dependency injection.
+        ngAnnotate: {
             dist: {
                 files: [{
                     expand: true,
@@ -286,10 +284,10 @@ module.exports = function(grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '.htaccess',
-                        '*.html',
-                        'views/**/*.html',
-                        'images/*',
-                    'font/*'
+                        'index.html',
+                        'components/**/*.html',
+                        'images/{,*/}*.{webp}',
+                        'font/*'
                     ]
                 }, {
                     expand: true,
@@ -315,8 +313,8 @@ module.exports = function(grunt) {
                 'compass'
             ],
             dist: [
-                'compass:dist' //,
-                //'imagemin'
+                'compass:dist',
+                'imagemin'
             ]
         },
 
@@ -365,11 +363,11 @@ module.exports = function(grunt) {
         'concurrent:dist',
         'autoprefixer',
         'concat',
-        'ngmin',
+        'ngAnnotate',
         'copy:dist',
         'cssmin',
         'uglify',
-        //'rev',
+        'rev',
         'usemin',
         'htmlmin'
     ]);

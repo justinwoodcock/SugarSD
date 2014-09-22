@@ -1,0 +1,10 @@
+<section id="panel-{{section.title}}" class="sugar-panel" ng-repeat="section in sections">
+    <img class="img-parallax" ng-src="images/{{section.bgImage}}" width="100%" du-parallax y="background">
+    <div class="sugar-content">
+        <div class="container">
+            <div class="row">
+                <div ng-bind-html="section.content"></div>
+            </div>
+        </div>
+    </div>
+</section>
