@@ -6,7 +6,8 @@ var sugar = angular.module('sugar', [
     'duParallax',
     'textAngular',
     'ngSanitize',
-    'restangular'
+    'restangular',
+    'ngTable'
 ]);
 
 sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {

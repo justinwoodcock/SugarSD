@@ -12,21 +12,19 @@
             <h2>Sections</h2>
             <button class="btn btn-secondary" ng-click="addSection()">Add new section</button>
             <button class="btn btn-secondary" ng-click="editMode()">Edit a section</button>
-        </div>
-        <div id="sections-preview" class="col-xs-12 admin-section" ng-show="edit===true">
-            <p>Choose a section to edit</p>            
-            <div class="row">
-                <div class="col-sm-6 col-md-3" ng-repeat="item in sections" ng-click="editSection(item, $index)">
-                    <div class="section-preview">
-                        <div class="title pull-left">{{item.title}}</div>
-                        <i class="pull-right" ng-class="{'icon-check': editIndex===$index, 'icon-check-empty': editIndex!==$index}"></i>
-                        <img ng-src="images/{{item.bgImage}}">
+            <div id="sections-preview" class="admin-section" ng-show="edit===true">
+                <p>Choose a section to edit</p>
+                <div class="row">
+                    <div class="col-sm-6 col-md-3" ng-repeat="item in sections" ng-click="editSection(item, $index)">
+                        <div class="section-preview">
+                            <div class="title pull-left">{{item.title}}</div>
+                            <i class="pull-right" ng-class="{'icon-check': editIndex===$index, 'icon-check-empty': editIndex!==$index}"></i>
+                            <img ng-src="images/{{item.bgImage}}">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-12 admin-section" ng-show="showForm===true">
-            <form name="admin" novalidate>
+            <form name="admin" class="admin-section" ng-show="showForm===true" novalidate>
                 <div class="form-group">
                     <label for="section-bg-image">Background Image</label>
                     <input type="text" name="section-bg-image" id="section-bg-image" class="form-control" ng-model="section.bgImage" />
@@ -41,6 +39,123 @@
                 </div>
                 <button class="btn btn-primary" type="submit" ng-click="create()" ng-show="edit===false">Add section</button>
                 <button class="btn btn-primary" type="submit" ng-click="update()" ng-show="edit===true">Update section</button>
+            </form>
+        </div>
+        <div class="col-xs-12 admin-section">
+            <h2>Services</h2>
+            <div class="admin-section">
+                <div class="btn-group" dropdown is-open="status.isopen">
+                    <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+                    <span ng-if="!service.category">Category</span>
+                    <span ng-if="service.category">{{service.category.title}}</span>
+                    <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in data.categories" ng-click="selectCategory(item, 'category')">
+                            <a>{{item.title}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group" dropdown is-open="status.isopen" ng-if="service.category.subcategories.length > 0">
+                    <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+                    <span ng-if="!service.subcategory">Subcategory</span>
+                    <span ng-if="service.subcategory">{{service.subcategory}}</span>
+                    <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in service.category.subcategories" ng-click="selectCategory(item, 'subcategory')">
+                            <a>{{item}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="admin-section">
+                <form name="services" class="admin-section" ng-show="true" novalidate>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label for="service-title">Title</label>
+                                <input type="text" name="service-title" id="service-title" class="form-control" ng-model="service.title" />
+                            </div>
+                            <div class="form-group">
+                                <label for="service-price">Price</label>
+                                <input type="text" name="service-price" id="service-price" class="form-control" ng-model="service.price" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label for="service-description">Description</label>
+                                <textarea type="text" name="service-description" id="service-description" class="form-control" rows="5" ng-model="service.description"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <button class="btn btn-primary" type="submit" ng-click="addService()" ng-show="true">Add service</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="admin-section">
+                <table ng-table="tableParams" class="table">
+                    <tbody ng-repeat="group in $groups">
+                        <tr class="ng-table-group">
+                            <td colspan="{{$columns.length}}">
+                                <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                                    <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                                    <strong>{{ group.value }}</strong>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr ng-hide="group.$hideRows" ng-repeat="item in group.data">
+                            <td sortable="price" data-title="'Price'">
+                                {{item.price}}
+                            </td>
+                            <td sortable="title" data-title="'Title'">
+                                {{item.title}}
+                            </td>
+                            <td sortable="description" data-title="'Description'">
+                                {{item.description}}
+                            </td>
+                            <td sortable="subcategory" data-title="'Subcategory'">
+                                {{item.subcategory}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-xs-12 admin-section">
+            <h2>Contact</h2>
+            <p>Update contact information here.</p>
+            <form name="contact" class="admin-section" ng-show="true" novalidate>
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <label for="contact-address">Address</label>
+                        <input type="text" name="contact-address" id="contact-address" class="form-control" ng-model="contact.address" />
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label for="contact-city">City</label>
+                        <input type="text" name="contact-city" id="contact-city" class="form-control" ng-model="contact.city" />
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="contact-state">State</label>
+                        <input type="text" name="contact-state" id="contact-state" class="form-control" ng-model="contact.state" />
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="contact-zip">Zip</label>
+                        <input type="text" name="contact-zip" id="contact-zip" class="form-control" ng-model="contact.zip" />
+                    </div>
+                    <div class="form-group col-xs-7">
+                        <label for="contact-phone">Phone</label>
+                        <input type="text" name="contact-phone" id="contact-phone" class="form-control" ng-model="contact.phone" />
+                    </div>
+                    <div class="form-group col-xs-7">
+                        <label for="contact-email">Email</label>
+                        <input type="text" name="contact-email" id="contact-email" class="form-control" ng-model="contact.email" />
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <button class="btn btn-primary" type="submit" ng-click="updateContact()" ng-show="true">Update contact info</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

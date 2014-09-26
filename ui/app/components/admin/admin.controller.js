@@ -1,8 +1,10 @@
 'use strict';
 
-sugar.controller('AdminController', ['$scope', 'SugarFactory',
-    function($scope, SugarFactory) {
+sugar.controller('AdminController', ['$scope', 'SugarFactory', '$filter', 'ngTableParams',
+    function($scope, SugarFactory, $filter, ngTableParams) {
         $scope.section = {};
+        $scope.service = {};
+        $scope.data = {};
         $scope.edit = false;
         $scope.alert = {
             show: false
@@ -12,6 +14,42 @@ sugar.controller('AdminController', ['$scope', 'SugarFactory',
             $scope.SectionEntity = data;
             $scope.sections = data.plain();
         })
+
+        SugarFactory.getEntity('contact').then(function(data) {
+            $scope.ContactEntity = data;
+            $scope.contact = data.plain()[0];
+            console.log($scope.contact)
+        })
+
+        SugarFactory.getEntity('service').then(function(data) {
+            $scope.ServiceEntity = data;
+            $scope.services = data.plain();
+            console.log($scope.services);
+            initTable();
+        })
+
+        $scope.data.categories = SugarFactory.getCategories();
+
+        $scope.selectCategory = function(item, type) {
+            $scope.service[type] = item;
+            console.log($scope);
+        }
+
+        $scope.addService = function() {
+            var serviceObject = $scope.service;
+            serviceObject.category = $scope.service.category.title;
+            if (typeof($scope.service.category.subcategory) !== undefined && $scope.service.category.subcategory !== null) {
+                serviceObject.subcategory = $scope.service.subcategory;
+            }
+            $scope.ServiceEntity.post(serviceObject).then(function(data) {
+                $scope.service = {};
+                $scope.ServiceEntity.getList().then(function(data) {
+                    $scope.ServiceEntity = data;
+                    $scope.services = data.plain();
+                    $scope.tableParams.reload();
+                })
+            });
+        }
 
         $scope.create = function() {
             $scope.SectionEntity.post($scope.section).then(function(data) {
@@ -79,5 +117,30 @@ sugar.controller('AdminController', ['$scope', 'SugarFactory',
                 $scope.$apply();
             }, 5000)
         }
+
+        $scope.updateContact = function() {
+            console.log($scope.contact)
+            $scope.ContactEntity[0].put($scope.contact).then(function(data) {
+                console.log(data);
+            });
+        }
+
+        function initTable() {
+            $scope.tableParams = new ngTableParams({
+                page: 1, // show first page
+                count: 10 // count per page
+            }, {
+                groupBy: 'category',
+                total: $scope.services.length,
+                getData: function($defer, params) {
+                    var orderedData = params.sorting() ?
+                        $filter('orderBy')($scope.services, $scope.tableParams.orderBy()) :
+                        $scope.services;
+
+                    $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                }
+            });
+        }
+        
     }
 ]);
