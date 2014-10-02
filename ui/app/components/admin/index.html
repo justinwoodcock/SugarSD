@@ -9,6 +9,31 @@
             <p>This is the place where you do the things.</p>
         </div>
         <div class="col-xs-12 admin-section">
+            <h2>Image management</h2>
+<form ng-controller="uploader">
+        <input type="file" 
+            file-input="files" name="uploadFile" 
+            multiple />
+        <button ng-click="upload()">Upload</button>
+        <li ng-repeat="file in files">{{file.name}}</li>
+    </form>
+
+            <button class="btn btn-secondary" id="btn-upload">Test</button>
+            <button class="btn btn-secondary file-upload" ng-file-select="onFileSelect($files)" accept="image/*">Upload image</button>
+            <input type="file" ng-file-select="onFileSelect($files)" onclick="this.value=null">
+            <div id="sections-preview" class="admin-section" ng-show="true">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3" ng-repeat="image in images" ng-click="deleteImage(item, $index)">
+                        <div class="section-preview">
+                            <div class="title pull-left">{{image.filename.replace('.jpg', '')}}</div>
+                            <i ng-show="false" class="pull-right" ng-class="{'icon-check': editIndex===$index, 'icon-check-empty': editIndex!==$index}"></i>
+                            <img ng-src="images/{{image.filename}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 admin-section">
             <h2>Sections</h2>
             <button class="btn btn-secondary" ng-click="addSection()">Add new section</button>
             <button class="btn btn-secondary" ng-click="editMode()">Edit a section</button>
@@ -106,17 +131,28 @@
                             </td>
                         </tr>
                         <tr ng-hide="group.$hideRows" ng-repeat="item in group.data">
-                            <td sortable="price" data-title="'Price'">
-                                {{item.price}}
+                            <td sortable="price" data-title="'Price'" class="price">
+                                <input type="text" ng-class="{'editable': serviceToEdit===$index}" ng-disabled="serviceToEdit!==$index" ng-model="item.price"/>
                             </td>
-                            <td sortable="title" data-title="'Title'">
-                                {{item.title}}
+                            <td sortable="title" data-title="'Title'" class="title">
+                                <input type="text" ng-class="{'editable': serviceToEdit===$index}" ng-disabled="serviceToEdit!==$index" ng-model="item.title"/>
                             </td>
-                            <td sortable="description" data-title="'Description'">
-                                {{item.description}}
+                            <td sortable="description" data-title="'Description'" class="description">
+                                <input type="text" ng-class="{'editable': serviceToEdit===$index}" ng-disabled="serviceToEdit!==$index" ng-model="item.description"/>
                             </td>
                             <td sortable="subcategory" data-title="'Subcategory'">
                                 {{item.subcategory}}
+                            </td>
+                            <td data-title="'Actions'">
+                                <button class="btn btn-secondary btn-sm" ng-click="selectItemToEdit($index)" ng-show="serviceToEdit!==$index">
+                                    edit
+                                </button>
+                                <button class="btn btn-secondary" ng-show="serviceToEdit===$index" ng-click="editService(item, $index)">
+                                    save
+                                </button>
+                                <button class="btn btn-secondary btn-sm" ng-click="deleteService(item, $index)">
+                                    delete
+                                </button>
                             </td>
                         </tr>
                     </tbody>

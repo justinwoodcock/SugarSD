@@ -7,7 +7,8 @@ var sugar = angular.module('sugar', [
     'textAngular',
     'ngSanitize',
     'restangular',
-    'ngTable'
+    'ngTable',
+    'angularFileUpload'
 ]);
 
 sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
