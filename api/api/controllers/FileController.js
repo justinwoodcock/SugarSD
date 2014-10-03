@@ -10,10 +10,10 @@ module.exports = {
       if(req.method === 'GET')
           return res.json({'status':'GET not allowed'});                       // Call to /upload via GET is error
 
-      var uploadFile = req.file('uploadFile');
+      var uploadFile = req.file('files');
       console.log(uploadFile);
 
-      uploadFile.upload({ dirname: '../ui/app/images'}, function onUploadComplete (err, files) {
+      uploadFile.upload({ dirname: '../ui/app/images/uploads'}, function onUploadComplete (err, files) {
                                                                               
           if (err) return res.serverError(err);                              // IF ERROR Return and send 500 error with error
           

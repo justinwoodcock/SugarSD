@@ -8,36 +8,28 @@
             <h1>Admin</h1>
             <p>This is the place where you do the things.</p>
         </div>
+        <!-- image management -->
         <div class="col-xs-12 admin-section">
             <h2>Image management</h2>
-<form ng-controller="uploader">
-        <input type="file" 
-            file-input="files" name="uploadFile" 
-            multiple />
-        <button ng-click="upload()">Upload</button>
-        <li ng-repeat="file in files">{{file.name}}</li>
-    </form>
-
-            <button class="btn btn-secondary" id="btn-upload">Test</button>
-            <button class="btn btn-secondary file-upload" ng-file-select="onFileSelect($files)" accept="image/*">Upload image</button>
-            <input type="file" ng-file-select="onFileSelect($files)" onclick="this.value=null">
+            <button class="btn btn-secondary file-upload" ng-file-select="onFileSelect($files)" name="files" accept="image/*">Upload image</button>
             <div id="sections-preview" class="admin-section" ng-show="true">
                 <div class="row">
-                    <div class="col-sm-6 col-md-3" ng-repeat="image in images" ng-click="deleteImage(item, $index)">
+                    <div class="col-sm-6 col-md-3" ng-repeat="image in images">
                         <div class="section-preview">
-                            <div class="title pull-left">{{image.filename.replace('.jpg', '')}}</div>
-                            <i ng-show="false" class="pull-right" ng-class="{'icon-check': editIndex===$index, 'icon-check-empty': editIndex!==$index}"></i>
-                            <img ng-src="images/{{image.filename}}">
+                            <div class="title pull-left">{{image.name}}</div>
+                            <i ng-show="true" class="fa fa-trash pull-right" ng-click="deleteImage(image, $index)"></i>
+                            <img ng-src="images/{{image.name}}">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- end image management -->
         <div class="col-xs-12 admin-section">
             <h2>Sections</h2>
             <button class="btn btn-secondary" ng-click="addSection()">Add new section</button>
             <button class="btn btn-secondary" ng-click="editMode()">Edit a section</button>
-            <div id="sections-preview" class="admin-section" ng-show="edit===true">
+            <div id="sections-preview" class="admin-section">
                 <p>Choose a section to edit</p>
                 <div class="row">
                     <div class="col-sm-6 col-md-3" ng-repeat="item in sections" ng-click="editSection(item, $index)">
@@ -49,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <form name="admin" class="admin-section" ng-show="showForm===true" novalidate>
+            <form name="admin" class="admin-section" novalidate>
                 <div class="form-group">
                     <label for="section-bg-image">Background Image</label>
                     <input type="text" name="section-bg-image" id="section-bg-image" class="form-control" ng-model="section.bgImage" />

@@ -1,46 +1,5 @@
 'use strict';
 
-sugar.directive('fileInput',['$parse',function($parse){
-        return {
-            restrict:'A',
-            link:function(scope,elm,attrs){
-                elm.bind('change',function(){
-                    $parse(attrs.fileInput)
-                    .assign(scope,elm[0].files)
-                    scope.$apply()
-                })
-            }
-        }
-    }])
-
-sugar.controller('uploader', ['$scope', '$http',
-        function($scope, $http) {
-                $scope.filesChanged = function(elm){
-                    $scope.files=elm.files
-                    $scope.$apply();
-                }
-            $scope.upload = function() {
-                    var fd = new FormData()
-                    angular.forEach($scope.files,function(file){
-                        fd.append('uploadFile',file)
-                    })                    
-                $http.post('http://sugarsd.dev:1337/file/upload', fd,
-                {
-                    //transformRequest:angular.identity,
-                    //headers:{'Content-Type':'multipart/form-data'}
-                    headers: { 'Content-Type': undefined },
-  transformRequest: function(data) { return data; }
-                })
-                .success(function(data) {
-                    console.log(data.file[0].filename);
-                    // do a post here to create image in database.
-                }).error(function(data) {
-                    console.log(data);
-                })
-            }
-        }
-    ])
-
 sugar.controller('AdminController', ['$scope', 'SugarFactory', '$filter', 'ngTableParams', '$upload', '$http', 'Restangular',
     function($scope, SugarFactory, $filter, ngTableParams, $upload, $http, Restangular) {
         $scope.section = {};
@@ -74,117 +33,40 @@ sugar.controller('AdminController', ['$scope', 'SugarFactory', '$filter', 'ngTab
             console.log($scope.images);
         })
 
-        var url = 'http://sugarsd.dev:1337/file/upload';
-
-        new Dropzone('#btn-upload', { // Make the whole body a dropzone
-            url: url, // Set the url
-            previewsContainer: false // Define the container to display the previews
-        });
-
-        $scope.onFileSelect = function($files) {
-            console.log('file selected');
-
-
-
-            var file = $('input.file-upload')[0].files[0];
-            console.log(file);
-
-
-            // Restangular.all('file/upload').withHttpConfig({transformRequest: angular.identity}).customPOST($files[0]).then(function(data) {
-            //     console.log(data);
-            //     $scope.ImageEntity.post(data).then(function(data) {
-            //             console.log(data);
-            //             $scope.images = data.plain();
-            //         });
-            // }, function(data) {
-            //     console.log(data);
-            // })
-
-            var postData = {
-                uploadFile: {
-                    file: file
-                }
-            }
-
-            Restangular.all('file/upload').withHttpConfig({
-                transformRequest: angular.identity
-            }).post(postData, {}, {
-                'Content-Type': undefined
-            }).then(function(data) {
-                console.log(data);
-                $scope.ImageEntity.post(data).then(function(data) {
+        $scope.onFileSelect = function($files) {            
+            for (var i = 0; i < $files.length; i++) {
+                var file = $files[i];
+                $scope.upload = $upload.upload({
+                    url: 'http://sugarsd.dev:1337/file/upload',
+                    data: {
+                        files: file
+                    }
+                }).progress(function(evt) {
+                    $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
+                }).success(function(data, status, headers, config) {
                     console.log(data);
-                    $scope.images = data.plain();
-                });
-            }, function(data) {
-                console.log(data);
-            })
-
-
-
-
-            // $http.post(url, fd, {
-            //     transformRequest: angular.identity,
-            //     headers: {'Content-Type': undefined}
-            // })
-            // .success(function(data){
-            //     console.log(data);
-            // })
-            // .error(function(data){
-            //     console.log(data);
-            // });
-
-            // $files: an array of files selected, each file has name, size, and type.
-            //     for (var i = 0; i < $files.length; i++) {
-            //         var file = $files[i];
-            //         console.log(file);
-            //         $scope.upload = $upload.upload({
-            //             url: 'http://sugar.dev:1337/file/upload', //upload.php script, node.js route, or servlet url
-            //             method: 'POST',
-            //             headers: {'Content-Type': 'multipart/form-data'},
-            //             //withCredentials: true,
-            //             data: {
-            //                 uploadFile: file
-            //             },
-            //             file: file, // or list of files ($files) for html5 only
-            //             //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
-            //             // customize file formData name ('Content-Disposition'), server side file variable name. 
-            //             //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
-            //             // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
-            //             //formDataAppender: function(formData, key, val){}
-            //         }).progress(function(evt) {
-            //             console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-            //         }).success(function(data, status, headers, config) {
-            //             // file is uploaded successfully
-            //             console.log(data);
-            //             $scope.ImageEntity.post(data).then(function(data) {
-            //                 console.log(data);
-            //                 $scope.images = data.plain();
-            //             });
-            //         });
-            //     // .error(...)
-            //     // .then(success, error, progress); 
-            //     // access or attach event listeners to the underlying XMLHttpRequest.
-            //     // .xhr(function(xhr){xhr.upload.addEventListener(...)})
-            // }
-            /* alternative way of uploading, send the file binary with the file's content-type.
-       Could be used to upload files to CouchDB, imgur, etc... html5 FileReader is needed. 
-       It could also be used to monitor the progress of a normal http post/put request with large data*/
-            // $scope.upload = $upload.http({...})  see 88#issuecomment-31366487 for sample code.
-
-            $scope.upload = $upload.upload({
-                url: url,
-                data: {
-                    uploadFile: $files[0]
-                }
-            }).progress(function(evt) {
-                $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
-            }).success(function(data, status, headers, config) {
-                console.log(data);
-            }).error(function(data, status, headers, config) {
-                console.log('error uploading file.')
-            })
+                    var imageObject = {
+                        name: data.file[0].filename,
+                        size: data.file[0].size,
+                        type: data.file[0].type
+                    }
+                    $scope.ImageEntity.post(imageObject).then(function(data) {
+                        console.log(data);
+                        $scope.images = data.plain();
+                    });
+                }).error(function(data, status, headers, config) {
+                    console.log('error uploading file.')
+                })
+            };
         };
+
+        $scope.deleteImage = function(image, $index) {
+            console.log('index: ', $index);
+            console.log('image: ', image);
+            $scope.ImageEntity[$index].remove().then(function(data) {
+                console.log('image deleted: ', data)
+            })
+        }
 
         $scope.data.categories = SugarFactory.getCategories();
 
