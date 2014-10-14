@@ -32,6 +32,13 @@ sugar.factory('SugarFactory', ['Restangular',
                         description: 'description'
                     }
                 ]
+            },
+            user: {
+                register: function(data) {
+                    Restangular.all()
+                },
+                login: function() {},
+                logout: function() {}
             }
         }
     }

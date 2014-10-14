@@ -41,6 +41,20 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/footer/index.html'
             }
         }
+    }).state('login', {
+        url: '/login',
+        views: {
+            content: {
+                templateUrl: 'components/login/index.html',
+                controller: 'LoginController'
+            },
+            header: {
+                templateUrl: 'components/header/index.html'
+            },
+            footer: {
+                templateUrl: 'components/footer/index.html'
+            }
+        }
     });
     $urlRouterProvider.otherwise('/');
 });
