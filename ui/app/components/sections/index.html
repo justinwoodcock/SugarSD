@@ -8,6 +8,30 @@
         </div>
     </div>
 </section>
+<section id="panel-services" class="sugar-panel">
+    <img class="img-parallax" width="100%" du-parallax y="background" src="images/inside.jpg">
+    <div class="sugar-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="pull-left">Services</h2>
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-repeat="service in services" ng-click="selectCategory(service)">{{service[0].category}}</button>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <p>List of services and pricing</p>
+                </div>
+                <div class="col-xs-12" ng-show="selectedCategory===service[0].category" ng-repeat="service in services">
+                    {{service[0].category}}
+                    <ul>
+                        <li ng-repeat="item in service">{{item.title}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="panel-contact" class="sugar-panel">
     <div id="map" class="img-parallax"></div>
     <div class="sugar-content">

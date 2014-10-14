@@ -11,7 +11,6 @@ module.exports = {
         title: 'string',
         description: 'string', 
         price: 'string', 
-        category: 'string',
-        subcategory: 'string'
+        category: 'string'
     }
 };

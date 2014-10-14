@@ -73,7 +73,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="btn-group" dropdown is-open="status.isopen" ng-if="service.category.subcategories.length > 0">
+                <!-- <div class="btn-group" dropdown is-open="status.isopen" ng-if="service.category.subcategories.length > 0">
                     <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
                     <span ng-if="!service.subcategory">Subcategory</span>
                     <span ng-if="service.subcategory">{{service.subcategory}}</span>
@@ -84,7 +84,7 @@
                             <a>{{item}}</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="admin-section">
                 <form name="services" class="admin-section" ng-show="true" novalidate>
@@ -131,9 +131,6 @@
                             </td>
                             <td sortable="description" data-title="'Description'" class="description">
                                 <input type="text" ng-class="{'editable': serviceToEdit===$index}" ng-disabled="serviceToEdit!==$index" ng-model="item.description"/>
-                            </td>
-                            <td sortable="subcategory" data-title="'Subcategory'">
-                                {{item.subcategory}}
                             </td>
                             <td data-title="'Actions'">
                                 <button class="btn btn-secondary btn-sm" ng-click="selectItemToEdit($index)" ng-show="serviceToEdit!==$index">

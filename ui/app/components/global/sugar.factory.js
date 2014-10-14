@@ -8,20 +8,28 @@ sugar.factory('SugarFactory', ['Restangular',
                 return [
                     {
                         title: 'Sunless Spray Tanning',
-                        description: '', 
-                        subcategories: [
-
-                        ]
+                        id: 'sunless-spray-tanning',
+                        description: '',
                     },
                     {
-                        title: 'Sugaring',
-                        description: '', 
-                        subcategories: [
-                            'Bikini',
-                            'Body', 
-                            'Face', 
-                            'For the gents'
-                        ]
+                        title: 'Bikini',
+                        id: 'bikini',
+                        description: ''
+                    },
+                    {
+                        title: 'Body',
+                        id: 'body',
+                        description: ''
+                    },
+                    {
+                        title: 'Face',
+                        id: 'face',
+                        description: 'description'
+                    },
+                    {
+                        title: 'For the gents',
+                        id: 'for-the-gents',
+                        description: 'description'
                     }
                 ]
             }
