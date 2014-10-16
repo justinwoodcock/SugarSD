@@ -29,8 +29,8 @@ module.exports.policies = {
   '*': true,
 
   SectionController: {
-    // '*': ['sessionAuth'],
-    '*': ['hasJsonWebToken']
+    '*': ['sessionAuth'],
+    // '*': ['hasJsonWebToken']
   }
 
   /***************************************************************************

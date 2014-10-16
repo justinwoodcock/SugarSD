@@ -63,9 +63,8 @@ sugar.config(['RestangularProvider',
     function(RestangularProvider) {
         var apiUrl = 'http://sugarsd.dev:1337';
         RestangularProvider.setBaseUrl(apiUrl);
-        // RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
-        //     var extractedData = data.data;
-        //     return extractedData;
-        // });
+        RestangularProvider.setDefaultHttpFields({
+            withCredentials: true
+        });
     }
 ]);

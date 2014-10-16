@@ -4,6 +4,9 @@ sugar.factory('SugarFactory', ['Restangular',
             getEntity: function(entity) {
                 return Restangular.all(entity).getList();
             },
+            createEntity: function(entity) {
+                return Restangular.all(entity);
+            },
             getCategories: function() {
                 return [
                     {
