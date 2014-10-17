@@ -1,7 +1,7 @@
 'use strict';
 
-sugar.controller('SugarController', ['$scope', 'parallaxHelper', '$modal', '$http', '$rootScope', '$state',
-    function($scope, parallaxHelper, $modal, $http, $rootScope, $state) {
+sugar.controller('SugarController', ['$scope', 'parallaxHelper', '$modal', '$http', '$rootScope', '$state', 'AuthFactory',
+    function($scope, parallaxHelper, $modal, $http, $rootScope, $state, AuthFactory) {
         //$scope.navbarCollapsed = true;
 
         // $scope.$watch('navbarCollapsed', function() {
@@ -37,6 +37,10 @@ sugar.controller('SugarController', ['$scope', 'parallaxHelper', '$modal', '$htt
             $scope.state = toState;
             $scope.state.nicename = toState.name.replace(/-/g, ' ');
         });
+
+        $scope.logout = function() {
+            AuthFactory.logout();
+        };
 
     }
 ]);

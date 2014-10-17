@@ -29,8 +29,16 @@ module.exports.policies = {
   '*': true,
 
   SectionController: {
-    '*': ['sessionAuth'],
+    'create': ['sessionAuth', 'hasJsonWebToken'],
+    'update': ['sessionAuth', 'hasJsonWebToken'],
+    'destroy': ['sessionAuth', 'hasJsonWebToken']
+    // '*': ['sessionAuth'],
     // '*': ['hasJsonWebToken']
+  },
+  ContactController: {
+    'create': ['sessionAuth', 'hasJsonWebToken'],
+    'update': ['sessionAuth', 'hasJsonWebToken'],
+    'destroy': ['sessionAuth', 'hasJsonWebToken']
   }
 
   /***************************************************************************

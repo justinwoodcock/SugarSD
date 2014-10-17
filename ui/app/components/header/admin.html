@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4 col-sm-offset-0 col-sm-3 col-md-2">
+            <a href="#panel-home" du-smooth-scroll du-scrollspy id="logo">
+                <img src="images/sugar-sd-logo.png">
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-9 col-md-10 clearfix">
+            <span class="label label-default">admin</span>
+            <div id="header-actions" class="pull-right" ng-init="navbarCollapsed=false">
+                <button type="button" class="navbar-toggle" ng-click="navbarCollapsed=!navbarCollapsed">
+                    <i class="icon-menu"></i>
+                </button>
+                <nav class="collapse navbar-collapse pull-left" collapse="navbarCollapsed=true">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">item</a></li>
+                    </ul>
+                </nav>
+                <button class="btn btn-primary book-appointment pull-left" ng-show="navbarCollapsed=true" ng-click="openBooking()">Book an Appointment</button>
+            </div>
+        </div>
+    </div>
+</div>

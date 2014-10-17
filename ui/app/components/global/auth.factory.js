@@ -28,6 +28,9 @@ sugar.factory('AuthFactory', ['Restangular',
             logout: function() {
                 Restangular.one('auth', 'logout').get().then(function(data) {
                     console.log(data);
+                    Restangular.setDefaultHeaders({
+                        access_token: null
+                    });
                     hasAuth = false;
                 }, function(data) {
                     console.log(data);

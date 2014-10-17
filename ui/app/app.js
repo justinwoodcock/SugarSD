@@ -35,7 +35,7 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 controller: 'AdminController'
             },
             header: {
-                templateUrl: 'components/header/index.html'
+                templateUrl: 'components/header/admin.html'
             },
             footer: {
                 templateUrl: 'components/footer/index.html'
