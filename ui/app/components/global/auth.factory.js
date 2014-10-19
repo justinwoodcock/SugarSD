@@ -4,7 +4,6 @@ sugar.factory('AuthFactory', ['Restangular',
         var token = '';
         return {
             login: function(creds) {
-                console.log(this);
                 var self = this;
                 Restangular.one('auth', 'login').get(creds).then(function(data) {
                     self.getToken();
@@ -21,6 +20,7 @@ sugar.factory('AuthFactory', ['Restangular',
                     Restangular.setDefaultHeaders({
                         access_token: data.token
                     });
+                    console.log(Restangular);
                 }, function(data) {
                     console.log(data);
                 });

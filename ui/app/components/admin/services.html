@@ -1,0 +1,109 @@
+<div class="container" id="view-main">
+    <div id="alert-fixed" class="alert alert-{{alert.type}}" role="alert" ng-show="alert.show">
+        <span class="alert-message">{{alert.message}}</span>
+        <button type="button" class="close" ng-click="alert.show=false"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="admin-section">
+                <h1>Services</h1>
+                <p>This is the place where you do the things.</p>
+            </div>
+            <div class="admin-section action-buttons">
+                <button class="btn btn-primary" ng-click="showForm=true">Add new service</button>
+                <button class="btn btn-secondary" ng-click="showForm=false;" ng-show="edit || showForm">Cancel</button>
+            </div>
+            <div ng-show="showForm">
+                <div class="admin-section">
+                    <form name="services" novalidate>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <div class="btn-group" dropdown is-open="status.isopen">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle" ng-disabled="disabled">
+                                        <span ng-if="!service.category">Selet category</span>
+                                        <span ng-if="service.category">{{service.category.title}}</span>
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li ng-repeat="item in data.categories" ng-click="selectCategory(item, 'category')">
+                                                <a>{{item.title}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="service-title">Title</label>
+                                    <input type="text" name="service-title" id="service-title" class="form-control" ng-model="service.title" />
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="service-price">Price</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">$</span>
+                                        <input type="text" name="service-price" id="service-price" class="form-control" ng-model="service.price" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="service-description">Description</label>
+                                    <textarea type="text" name="service-description" id="service-description" class="form-control" rows="5" ng-model="service.description"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <button class="btn btn-primary" type="submit" ng-click="addService()" ng-show="showForm===true">Save service</button>
+                                <button class="btn btn-primary" type="submit" ng-click="editService($scope.service)" ng-show="edit===true">Save service</button>
+                                <button class="btn btn-secondary pull-right" ng-click="showForm=false;" ng-show="edit || showForm">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="admin-section" ng-hide="showForm">
+                <table ng-table="tableParams" class="table">
+                    <tbody ng-repeat="group in $groups">
+                        <tr class="ng-table-group">
+                            <td colspan="{{$columns.length}}">
+                                <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                                    <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                                    <strong>{{ group.value }}</strong>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr ng-hide="group.$hideRows" ng-repeat="item in group.data">
+                            <td sortable="title" data-title="'Title'" class="title">
+                                {{item.title}}
+                                <!-- <input type="text" ng-class="{'editable': serviceToEdit===$index}" ng-disabled="serviceToEdit!==$index" ng-model="item.title"/> -->
+                            </td>
+                            <td sortable="price" data-title="'Price'" class="price">
+                                ${{item.price}}
+                                <!-- <input type="text" ng-class="{'editable': serviceToEdit===$index}" ng-disabled="serviceToEdit!==$index" ng-model="item.price"/> -->
+                            </td>
+                            <td sortable="description" data-title="'Description'" class="description">
+                                {{item.description}}
+                                <!-- <input type="text" ng-class="{'editable': serviceToEdit===$index}" ng-disabled="serviceToEdit!==$index" ng-model="item.description"/> -->
+                            </td>
+                            <td data-title="'Actions'">
+                                <i class="icon-pencil" ng-click="selectItemToEdit(item, $index)"></i>
+                                <i class="icon-trash" ng-click="deleteService(item)"></i>
+                                <!-- <button class="btn btn-secondary btn-sm" ng-click="selectItemToEdit($index)" ng-show="serviceToEdit!==$index">
+                                edit
+                                </button>
+                                <button class="btn btn-secondary" ng-show="serviceToEdit===$index" ng-click="editService(item, $index)">
+                                save
+                                </button>
+                                <button class="btn btn-secondary btn-sm" ng-click="deleteService(item, $index)">
+                                delete
+                                </button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

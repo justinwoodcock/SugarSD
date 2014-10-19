@@ -67,6 +67,24 @@
       "src": "entypo"
     },
     {
+      "uid": "815503841e980c848f55e0271deacead",
+      "css": "link",
+      "code": 59403,
+      "src": "entypo"
+    },
+    {
+      "uid": "c77fd2fd065b5fe16d6f2b41e190b266",
+      "css": "pencil",
+      "code": 59402,
+      "src": "entypo"
+    },
+    {
+      "uid": "2626e3a1bbcd90e45849af3b58a1d594",
+      "css": "trash",
+      "code": 59401,
+      "src": "entypo"
+    },
+    {
       "uid": "9c7fd7637a41b59a358cb70893f945a5",
       "css": "rocket",
       "code": 59395,

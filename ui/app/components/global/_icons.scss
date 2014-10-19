@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'sugar';
-  src: url('/font/sugar.eot?9533568');
-  src: url('/font/sugar.eot?9533568#iefix') format('embedded-opentype'),
-       url('/font/sugar.woff?9533568') format('woff'),
-       url('/font/sugar.ttf?9533568') format('truetype'),
-       url('/font/sugar.svg?9533568#sugar') format('svg');
+  src: url('/font/sugar.eot?93550661');
+  src: url('/font/sugar.eot?93550661#iefix') format('embedded-opentype'),
+       url('/font/sugar.woff?93550661') format('woff'),
+       url('/font/sugar.ttf?93550661') format('truetype'),
+       url('/font/sugar.svg?93550661#sugar') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'sugar';
-    src: url('../font/sugar.svg?9533568#sugar') format('svg');
+    src: url('/font/sugar.svg?93550661#sugar') format('svg');
   }
 }
 */
@@ -59,3 +59,6 @@
 .icon-th-list:before { content: '\e806'; } /* '' */
 .icon-github:before { content: '\e807'; } /* '' */
 .icon-menu:before { content: '\e808'; } /* '' */
+.icon-trash:before { content: '\e809'; } /* '' */
+.icon-pencil:before { content: '\e80a'; } /* '' */
+.icon-link:before { content: '\e80b'; } /* '' */

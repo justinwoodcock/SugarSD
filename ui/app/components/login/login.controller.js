@@ -1,7 +1,7 @@
 'use strict';
 
-sugar.controller('LoginController', ['$scope', 'AuthFactory', '$http', 'Restangular',
-    function($scope, AuthFactory, $http, Restangular) {
+sugar.controller('LoginController', ['$scope', 'AuthFactory', '$state',
+    function($scope, AuthFactory, $state) {
         $scope.show = 'login';
         $scope.login = function() {
             var creds = {
@@ -9,27 +9,21 @@ sugar.controller('LoginController', ['$scope', 'AuthFactory', '$http', 'Restangu
                 password: $scope.password
             };
             AuthFactory.login(creds);
-
-                // Restangular.one('auth', 'login').get(creds).then(function(data) {
-                //     console.log(data);
-                // }, function(data) {
-                //     console.log(data);
-                // });
-
-                // Auth.get(JSON.stringify(creds)).then(function(data) {
-                //     console.log(data);
-                // }, function(data) {
-                //     console.log(data);
-                // })
-
-            // $http.get('http://sugarsd.dev:1337/auth/login?email='+$scope.email+'&password='+$scope.password).
-            // success(function(data, status, headers, config) {
-            //     console.log(data);
-            // }).
-            // error(function(data, status, headers, config) {
-            //     console.log(data);
-            // });
+            setTimeout(function() {
+                var hasAuth = AuthFactory.check();
+                console.log(hasAuth);
+                if(AuthFactory.check) {
+                    $state.go('admin-sections');
+                }
+            }, 250)
         };
-        $scope.register = function() {};
+        $scope.register = function() {
+            var creds = {
+                username: $scope.username,
+                email: $scope.email,
+                password: $scope.password
+            };
+            AuthFactory.login(creds);
+        };
     }
 ]);

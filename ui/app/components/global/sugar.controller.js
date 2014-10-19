@@ -2,11 +2,6 @@
 
 sugar.controller('SugarController', ['$scope', 'parallaxHelper', '$modal', '$http', '$rootScope', '$state', 'AuthFactory',
     function($scope, parallaxHelper, $modal, $http, $rootScope, $state, AuthFactory) {
-        //$scope.navbarCollapsed = true;
-
-        // $scope.$watch('navbarCollapsed', function() {
-        //     console.log($scope.navbarCollapsed);
-        // })
         $scope.background = parallaxHelper.createAnimator(-0.3, 150, -150);
 
         //$scope.background = parallaxHelper.createAnimator(-0.3);
@@ -38,8 +33,14 @@ sugar.controller('SugarController', ['$scope', 'parallaxHelper', '$modal', '$htt
             $scope.state.nicename = toState.name.replace(/-/g, ' ');
         });
 
+        $scope.checkAuth = function() {
+            $scope.hasAuth = AuthFactory.check();
+            return $scope.hasAuth;
+        }
+
         $scope.logout = function() {
             AuthFactory.logout();
+            $state.go('login');
         };
 
     }

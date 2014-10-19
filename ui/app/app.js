@@ -13,7 +13,7 @@ var sugar = angular.module('sugar', [
 
 sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     $httpProvider.defaults.useXDomain = true;
-    $stateProvider.state('sections', {
+    $stateProvider.state('home', {
         url: '/',
         views: {
             content: {
@@ -28,17 +28,70 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             }
         }
     }).state('admin', {
+        abstract: true,
         url: '/admin',
         views: {
-            content: {
-                templateUrl: 'components/admin/index.html',
-                controller: 'AdminController'
-            },
             header: {
                 templateUrl: 'components/header/admin.html'
             },
             footer: {
                 templateUrl: 'components/footer/index.html'
+            }
+        }
+    }).state('admin-images', {
+        url: '/admin/images',
+        views: {
+            header: {
+                templateUrl: 'components/header/admin.html'
+            },
+            footer: {
+                templateUrl: 'components/footer/index.html'
+            },
+            content: {
+                templateUrl: 'components/admin/images.html',
+                controller: 'AdminImagesController'
+            }
+        }
+    }).state('admin-sections', {
+        url: '/admin/sections',
+        views: {
+            header: {
+                templateUrl: 'components/header/admin.html'
+            },
+            footer: {
+                templateUrl: 'components/footer/index.html'
+            },
+            content: {
+                templateUrl: 'components/admin/sections.html',
+                controller: 'AdminSectionsController'
+            }
+        }
+    }).state('admin-services', {
+        url: '/admin/services',
+        views: {
+            header: {
+                templateUrl: 'components/header/admin.html'
+            },
+            footer: {
+                templateUrl: 'components/footer/index.html'
+            },
+            content: {
+                templateUrl: 'components/admin/services.html',
+                controller: 'AdminServicesController'
+            }
+        }
+    }).state('admin-contact', {
+        url: '/admin/contact',
+        views: {
+            header: {
+                templateUrl: 'components/header/admin.html'
+            },
+            footer: {
+                templateUrl: 'components/footer/index.html'
+            },
+            content: {
+                templateUrl: 'components/admin/contact.html',
+                controller: 'AdminContactController'
             }
         }
     }).state('login', {

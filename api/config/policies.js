@@ -29,17 +29,23 @@ module.exports.policies = {
   '*': true,
 
   SectionController: {
-    'create': ['sessionAuth', 'hasJsonWebToken'],
-    'update': ['sessionAuth', 'hasJsonWebToken'],
-    'destroy': ['sessionAuth', 'hasJsonWebToken']
+    'create': ['sessionAuth'],
+    'update': ['sessionAuth'],
+    'destroy': ['sessionAuth']
     // '*': ['sessionAuth'],
     // '*': ['hasJsonWebToken']
   },
   ContactController: {
-    'create': ['sessionAuth', 'hasJsonWebToken'],
-    'update': ['sessionAuth', 'hasJsonWebToken'],
-    'destroy': ['sessionAuth', 'hasJsonWebToken']
+    'create': ['sessionAuth'],
+    'update': ['sessionAuth'],
+    'destroy': ['sessionAuth']
   }
+  
+  // '*': [ 'hasJsonWebToken' ],
+  // AuthController: true,
+  // UserController: {
+  //   jwt: true
+  // }
 
   /***************************************************************************
   *                                                                          *
