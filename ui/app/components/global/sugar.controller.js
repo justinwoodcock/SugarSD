@@ -1,15 +1,11 @@
 'use strict';
 
-sugar.controller('SugarController', ['$scope', 'parallaxHelper', '$modal', '$http', '$rootScope', '$state', 'AuthFactory',
-    function($scope, parallaxHelper, $modal, $http, $rootScope, $state, AuthFactory) {
+sugar.controller('SugarController', ['$scope', 'parallaxHelper', '$modal', '$http', '$rootScope', '$state', 'AuthFactory', 'SugarFactory',
+    function($scope, parallaxHelper, $modal, $http, $rootScope, $state, AuthFactory, SugarFactory) {
         $scope.background = parallaxHelper.createAnimator(-0.3, 150, -150);
-
         //$scope.background = parallaxHelper.createAnimator(-0.3);
 
         $scope.openBooking = function() {
-
-            console.log('booking');
-
             var modalAppointmentBooking = $modal.open({
                 templateUrl: 'components/sections/schedulicity.html',
                 //controller: ModalInstanceCtrl,

@@ -26,7 +26,8 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             footer: {
                 templateUrl: 'components/footer/index.html'
             }
-        }
+        },
+        authenticate: false
     }).state('admin', {
         abstract: true,
         url: '/admin',
@@ -37,7 +38,8 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             footer: {
                 templateUrl: 'components/footer/index.html'
             }
-        }
+        },
+        authenticate: true
     }).state('admin-images', {
         url: '/admin/images',
         views: {
@@ -51,7 +53,8 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/admin/images.html',
                 controller: 'AdminImagesController'
             }
-        }
+        },
+        authenticate: true
     }).state('admin-sections', {
         url: '/admin/sections',
         views: {
@@ -65,7 +68,8 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/admin/sections.html',
                 controller: 'AdminSectionsController'
             }
-        }
+        },
+        authenticate: true
     }).state('admin-services', {
         url: '/admin/services',
         views: {
@@ -79,7 +83,8 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/admin/services.html',
                 controller: 'AdminServicesController'
             }
-        }
+        },
+        authenticate: true
     }).state('admin-contact', {
         url: '/admin/contact',
         views: {
@@ -93,7 +98,8 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/admin/contact.html',
                 controller: 'AdminContactController'
             }
-        }
+        },
+        authenticate: true
     }).state('login', {
         url: '/login',
         views: {
@@ -107,7 +113,8 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             footer: {
                 templateUrl: 'components/footer/index.html'
             }
-        }
+        },
+        authenticate: false
     });
     $urlRouterProvider.otherwise('/');
 });
@@ -118,6 +125,27 @@ sugar.config(['RestangularProvider',
         RestangularProvider.setBaseUrl(apiUrl);
         RestangularProvider.setDefaultHttpFields({
             withCredentials: true
+        });
+    }
+]);
+
+sugar.run(['$rootScope', '$state', 'AuthFactory', 'Restangular',
+    function($rootScope, $state, AuthFactory, Restangular) {
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            var hasAuth = AuthFactory.check();
+            var token = AuthFactory.token();
+            if (token.length === 0  && hasAuth) {
+                token = AuthFactory.getToken();
+                Restangular.setDefaultHeaders({
+                    access_token: token
+                });
+            }
+            if (toState.authenticate && !hasAuth) {
+                // User isn’t authenticated
+                $state.go('login');
+                event.preventDefault();
+                window.location.reload();
+            }
         });
     }
 ]);

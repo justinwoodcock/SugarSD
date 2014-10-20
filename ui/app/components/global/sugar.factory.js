@@ -35,7 +35,19 @@ sugar.factory('SugarFactory', ['Restangular',
                         description: 'description'
                     }
                 ]
-            }
+            },
+            getStorage: function() {
+                var data = localStorage.getItem('sugar');
+                if (data.toString() === '[object Object]') {
+                    return {};
+                }
+                return JSON.parse(data);
+            },
+            setStorage: function(object) {
+                console.log(object);
+                var data = JSON.stringify(object);
+                localStorage.setItem('sugar', data);
+            },
         }
     }
 

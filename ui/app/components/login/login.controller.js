@@ -1,7 +1,7 @@
 'use strict';
 
-sugar.controller('LoginController', ['$scope', 'AuthFactory', '$state',
-    function($scope, AuthFactory, $state) {
+sugar.controller('LoginController', ['$scope', 'AuthFactory', '$state', 'SugarFactory',
+    function($scope, AuthFactory, $state, SugarFactory) {
         $scope.show = 'login';
         $scope.login = function() {
             var creds = {
@@ -11,9 +11,14 @@ sugar.controller('LoginController', ['$scope', 'AuthFactory', '$state',
             AuthFactory.login(creds);
             setTimeout(function() {
                 var hasAuth = AuthFactory.check();
-                console.log(hasAuth);
-                if(AuthFactory.check) {
+                if(hasAuth) {
                     $state.go('admin-sections');
+                    var storage = SugarFactory.getStorage();
+                    storage.session = {
+                        hasAuth: true,
+                        token: AuthFactory.token()
+                    };
+                    SugarFactory.setStorage(storage);
                 }
             }, 250)
         };
