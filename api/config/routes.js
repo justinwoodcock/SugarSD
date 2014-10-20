@@ -36,6 +36,7 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
@@ -45,5 +46,6 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+  'post /email': 'ContactController.email'
 
 };

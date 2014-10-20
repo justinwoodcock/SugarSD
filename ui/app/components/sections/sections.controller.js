@@ -2,11 +2,11 @@
 
 sugar.controller('SectionsController', ['$scope', 'parallaxHelper', 'SugarFactory',
     function($scope, parallaxHelper, SugarFactory) {
-
+        $scope.formSubmitted = false;
         SugarFactory.getEntity('section').then(function(data) {
             $scope.sections = [];
             _.forEach(data.plain(), function(section) {
-                if(section.title !== 'services') {
+                if (section.title !== 'services') {
                     $scope.sections.push(section);
                 };
             })
@@ -27,7 +27,7 @@ sugar.controller('SectionsController', ['$scope', 'parallaxHelper', 'SugarFactor
             $scope.services = {};
             _.forEach(services, function(service) {
                 var categoryId = service.category.toLowerCase().replace(/ /g, '-');
-                if($scope.services[categoryId] === null || typeof($scope.services[categoryId]) === 'undefined') {
+                if ($scope.services[categoryId] === null || typeof($scope.services[categoryId]) === 'undefined') {
                     $scope.services[categoryId] = [];
                 }
                 $scope.services[categoryId].push(service);
@@ -46,5 +46,23 @@ sugar.controller('SectionsController', ['$scope', 'parallaxHelper', 'SugarFactor
         // Disable drag and zoom handlers.
         map.touchZoom.disable();
         map.scrollWheelZoom.disable();
+
+        $scope.sendEmail = function() {
+            var emailHtml = SugarFactory.emailMessage({
+                name: $scope.name,
+                email: $scope.email,
+                message: $scope.message
+            });
+            var emailObject = {
+                name: $scope.name,
+                email: $scope.email,
+                message: emailHtml
+            }
+            SugarFactory.sendEmail(emailObject);
+            $scope.name = '';
+            $scope.email = '';
+            $scope.message = '';
+            $scope.formSubmitted = true;
+        }
     }
 ]);
