@@ -14,19 +14,33 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h2 class="pull-left">Services</h2>
-                    <div class="pull-right">
-                        <button class="btn btn-primary" ng-repeat="service in services" ng-click="selectCategory(service)">{{service[0].category}}</button>
+                    <div class="clearfix">
+                        <h2 class="pull-left">Services<span ng-show="selectedCategory.length>0"> / {{selectedCategory}}</span></h2>
+                        <div class="pull-right category-buttons">
+                            <button class="btn btn-primary" ng-repeat="service in services" ng-click="selectCategory(service)" ng-class="{active: service[0].category===selectedCategory}">{{service[0].category}}</button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-12">
-                    <p>List of services and pricing</p>
+                    <!-- <p>Select a service category to the right to view available services. Click on a service below to book an appointment.</p> -->
                 </div>
                 <div class="col-xs-12" ng-show="selectedCategory===service[0].category" ng-repeat="service in services">
-                    {{service[0].category}}
-                    <ul>
-                        <li ng-repeat="item in service">{{item.title}}</li>
-                    </ul>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="item in service">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" ng-click="openBooking()">
+                                    <h3 class="panel-title">
+                                        {{item.title}}
+                                        <span class="pull-right">${{item.price}}</span>
+                                    </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        {{item.description}}
+                                    </p>
+                                    <button class="btn btn-secondary pull-right" ng-click="openBooking()">Book now</button>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

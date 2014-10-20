@@ -31,6 +31,7 @@ sugar.factory('AuthFactory', ['Restangular', 'SugarFactory',
                     hasAuth = false;
                     var storage = SugarFactory.getStorage();
                     storage.session.hasAuth = false;
+                    storage.session.token = null;
                     SugarFactory.setStorage(storage);
                 }, function(data) {
                     console.log(data);

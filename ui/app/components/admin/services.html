@@ -55,8 +55,8 @@
                                 </div>
                             </div>
                             <div class="form-group col-xs-12">
-                                <button class="btn btn-primary" type="submit" ng-click="addService()" ng-show="showForm===true">Save service</button>
-                                <button class="btn btn-primary" type="submit" ng-click="editService($scope.service)" ng-show="edit===true">Save service</button>
+                                <button class="btn btn-primary" type="submit" ng-click="addService()" ng-show="showForm===true && !edit">Save service</button>
+                                <button class="btn btn-primary" type="submit" ng-click="editService($scope.service)" ng-show="edit===true">Update service</button>
                                 <button class="btn btn-secondary pull-right" ng-click="showForm=false;" ng-show="edit || showForm">Cancel</button>
                             </div>
                         </div>

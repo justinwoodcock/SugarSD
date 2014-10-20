@@ -37,7 +37,38 @@ sugar.controller('AdminServicesController', ['$scope', 'SugarFactory', '$filter'
             console.log(item);
             //$scope.serviceToEdit = index;
             $scope.service = item;
+            //$scope.service.category
             $scope.showForm = true;
+            $scope.edit = true;
+        };
+
+        $scope.editService = function() {
+            console.log($scope.service);
+            var restangularItem = _.filter($scope.ServiceEntity, {
+                'id': $scope.service.id
+            });
+            console.log(restangularItem);
+            restangularItem[0] = _.merge(restangularItem[0], $scope.service);
+            restangularItem[0].put().then(function(data) {
+                $scope.showForm = false;
+                $scope.edit = false;
+                $scope.service = {};
+                $scope.alert = {
+                    show: true,
+                    message: 'The service has been successfully updated!',
+                    type: 'success'
+                };
+                clearAlert();
+                getServiceEntity();
+            }, function(data) {
+                $scope.service = {};
+                $scope.alert = {
+                    show: true,
+                    message: 'Oops, something went wrong! Please try again.',
+                    type: 'danger'
+                };
+                clearAlert();
+            });
         };
 
         $scope.addService = function() {
@@ -63,29 +94,6 @@ sugar.controller('AdminServicesController', ['$scope', 'SugarFactory', '$filter'
                 clearAlert();
             });
         }
-
-        $scope.editService = function(item) {
-            var restangularItem = _.filter($scope.ServiceEntity, {
-                'id': item.id
-            });
-            restangularItem[0] = _.merge(restangularItem[0], item);
-            restangularItem[0].put().then(function(data) {
-                $scope.alert = {
-                    show: true,
-                    message: 'The service has been successfully updated!',
-                    type: 'success'
-                };
-                clearAlert();
-                getServiceEntity();
-            }, function(data) {
-                $scope.alert = {
-                    show: true,
-                    message: 'Oops, something went wrong! Please try again.',
-                    type: 'danger'
-                };
-                clearAlert();
-            });
-        };
 
         $scope.deleteService = function(item) {
             var restangularItem = _.filter($scope.ServiceEntity, {

@@ -3,6 +3,7 @@
 sugar.controller('SectionsController', ['$scope', 'parallaxHelper', 'SugarFactory',
     function($scope, parallaxHelper, SugarFactory) {
         $scope.formSubmitted = false;
+        $scope.selectedCategory = 'Bikini';
         SugarFactory.getEntity('section').then(function(data) {
             $scope.sections = [];
             _.forEach(data.plain(), function(section) {
