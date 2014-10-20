@@ -39,10 +39,38 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2>Contact</h2>
-                    <p>Picture of outside of building, google map, address and contact info</p>
-                    <a class="btn btn-secondary" href="https://www.google.com/maps/dir//1240+San+Elijo+Rd+N,+San+Marcos,+CA+92078/@33.099112,-117.2031788,17z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x80dc0aebb345f0c7:0xb299a52220fa0b3c!2m2!1d-117.201033!2d33.099112" target="_blank">
-                        <i class="icon-map"></i>Get Directions
-                    </a>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <dl class="contact-list">
+                        <dt><i class="icon-map"></i> Address</dt>
+                        <dd>
+                        {{contact.address}}<br/>
+                        {{contact.city}}, {{contact.state}} {{contact.zip}}<br/>
+                        <a class="btn btn-primary btn-directions" href="https://www.google.com/maps/dir//1240+San+Elijo+Rd+N,+San+Marcos,+CA+92078/@33.099112,-117.2031788,17z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x80dc0aebb345f0c7:0xb299a52220fa0b3c!2m2!1d-117.201033!2d33.099112" target="_blank">
+                            <i class="icon-map"></i>Get Directions
+                        </a>
+                        </dd>
+                        <dt><i class="icon-mobile"></i> Phone</dt>
+                        <dd>{{contact.phone}}</dd>
+                        <dt><i class="icon-mail"></i> Email</dt>
+                        <dd>{{contact.email}}</dd>
+                    </dl>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" placeholder="Enter message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>

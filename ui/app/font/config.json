@@ -85,10 +85,22 @@
       "src": "entypo"
     },
     {
+      "uid": "767fede84586366cd7d6c835be745454",
+      "css": "mobile",
+      "code": 59404,
+      "src": "entypo"
+    },
+    {
       "uid": "9c7fd7637a41b59a358cb70893f945a5",
       "css": "rocket",
       "code": 59395,
       "src": "entypo"
+    },
+    {
+      "uid": "937f4db8b6ff3348a1d9fcd5e12fd2fe",
+      "css": "mail",
+      "code": 59405,
+      "src": "iconic"
     },
     {
       "uid": "cy7vw87w1slwyalc4vd8cdhrb50asud3",

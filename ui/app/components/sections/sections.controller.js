@@ -1,15 +1,7 @@
 'use strict';
 
-sugar.controller('SectionsController', ['$scope', 'parallaxHelper', 'SugarFactory', '$http', 'Restangular',
-    function($scope, parallaxHelper, SugarFactory, $http, Restangular) {
-
-        // $scope.section.nicename = function() {
-
-        // }
-
-        // $http.get('http://sugarsd.dev:1337/section').success(function(data) {
-        //     $scope.sections = data;
-        // })
+sugar.controller('SectionsController', ['$scope', 'parallaxHelper', 'SugarFactory',
+    function($scope, parallaxHelper, SugarFactory) {
 
         SugarFactory.getEntity('section').then(function(data) {
             $scope.sections = [];
@@ -24,6 +16,11 @@ sugar.controller('SectionsController', ['$scope', 'parallaxHelper', 'SugarFactor
             //$scope.services = data.plain();
             sortServices(data.plain());
             //console.log(data.plain())
+        })
+
+        SugarFactory.getEntity('contact').then(function(data) {
+            $scope.contact = data.plain()[0];
+            console.log($scope.contact);
         })
 
         function sortServices(services) {
