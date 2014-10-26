@@ -18,5 +18,5 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 
-  connection: 'sugarMongo'
+  connection: 'mongoLab'
 };
