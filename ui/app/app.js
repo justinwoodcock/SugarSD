@@ -121,7 +121,8 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
 sugar.config(['RestangularProvider',
     function(RestangularProvider) {
-        var apiUrl = 'http://sugarsd.dev:1337';
+        //var apiUrl = 'http://sugarsd.dev:1337';
+        var apiUrl = 'http://api.sugarsandiego.com';
         RestangularProvider.setBaseUrl(apiUrl);
         RestangularProvider.setDefaultHttpFields({
             withCredentials: true
