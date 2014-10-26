@@ -10,10 +10,10 @@
                     <input class="form-control" type="password" name="password" ng-model="password" placeholder="Password">
                 </div>
                 <button class="btn btn-primary" type="submit">Login</button>
-                <!-- <button class="btn btn-secondary pull-right" ng-click="show='register'">Register</button> -->
+                <button class="btn btn-secondary pull-right" ng-click="show='register'">Register</button>
             </form>
         </div>
-        <div class="col-xs-12" ng-show="show==='register'">
+        <div class="col-xs-12 col-lg-6 col-lg-offset-3 login-form" ng-show="show==='register'">
             <h1>Register</h1>
             <form role="form" ng-submit="register();">
                 <div class="form-group">

@@ -65,6 +65,11 @@ module.exports.connections = {
     database: 'sugar'
   },
 
+  mongoLab: {
+    adapter: 'sails-mongo',
+    url: 'mongodb://sails:superduper@ds047050.mongolab.com:47050/sugarsd'
+  },
+
   /***************************************************************************
   *                                                                          *
   * PostgreSQL is another officially supported relational database.          *
