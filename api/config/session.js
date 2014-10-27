@@ -72,7 +72,7 @@ module.exports.session = {
     // host: 'localhost',
     // port: 27017,
     // db: 'sugar',
-    collection: 'sessions',
+    collection: 'sessions'
 
   /***************************************************************************
   *                                                                          *
