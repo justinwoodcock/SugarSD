@@ -38,7 +38,8 @@ sugar.factory('SugarFactory', ['Restangular',
             },
             getStorage: function() {
                 var data = localStorage.getItem('sugar');
-                if (data.toString() === '[object Object]') {
+                console.log(data);
+                if (data == null || typeof(data) === 'undefined' || _.isEmpty(data) || data.toString() === '[object Object]') {
                     return {};
                 }
                 return JSON.parse(data);

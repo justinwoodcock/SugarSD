@@ -67,11 +67,12 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // adapter: 'mongo',
-  // host: 'localhost',
-  // port: 27017,
-  // db: 'sails',
-  // collection: 'sessions',
+    adapter: 'mongo',
+    url: 'mongodb://sails:superduper@ds047050.mongolab.com:47050/sugarsd',
+    // host: 'localhost',
+    // port: 27017,
+    // db: 'sugar',
+    collection: 'sessions',
 
   /***************************************************************************
   *                                                                          *
