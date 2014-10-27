@@ -19,7 +19,7 @@ sugar.controller('AdminImagesController', ['$scope', 'SugarFactory', '$filter', 
             for (var i = 0; i < $files.length; i++) {
                 var file = $files[i];
                 $scope.upload = $upload.upload({
-                    url: 'http://sugarsd.dev:1337/file/upload',
+                    url: 'http://api.sugarsandiego.com/file/upload',
                     data: {
                         files: file
                     }

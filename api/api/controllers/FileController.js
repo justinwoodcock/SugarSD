@@ -13,7 +13,7 @@ module.exports = {
       var uploadFile = req.file('files');
       console.log(uploadFile);
 
-      uploadFile.upload({ dirname: '../ui/app/images/uploads'}, function onUploadComplete (err, files) {
+      uploadFile.upload({ dirname: '../ui/dist/images'}, function onUploadComplete (err, files) {
                                                                               
           if (err) return res.serverError(err);                              // IF ERROR Return and send 500 error with error
           

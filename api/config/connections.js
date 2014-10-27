@@ -56,14 +56,14 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  sugarMongo: {
-    adapter: 'sails-mongo',
-    host: 'localhost',
-    port: 27017,
-    // user: 'username',
-    // password: 'password',
-    database: 'sugar'
-  },
+  // sugarMongo: {
+  //   adapter: 'sails-mongo',
+  //   host: 'localhost',
+  //   port: 27017,
+  //   user: 'username',
+  //   password: 'password',
+  //   database: 'sugar'
+  // },
 
   mongoLab: {
     adapter: 'sails-mongo',
