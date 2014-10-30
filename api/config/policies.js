@@ -29,24 +29,24 @@ module.exports.policies = {
   '*': true,
 
   SectionController: {
-    'create': ['sessionAuth', 'hasJsonWebToken'],
-    'update': ['sessionAuth', 'hasJsonWebToken'],
-    'destroy': ['sessionAuth', 'hasJsonWebToken']
+    'create': ['sessionAuth'],
+    'update': ['sessionAuth'],
+    'destroy': ['sessionAuth']
   },
   ContactController: {
-    'create': ['sessionAuth', 'hasJsonWebToken'],
-    'update': ['sessionAuth', 'hasJsonWebToken'],
-    'destroy': ['sessionAuth', 'hasJsonWebToken']
+    'create': ['sessionAuth'],
+    'update': ['sessionAuth'],
+    'destroy': ['sessionAuth']
   },
   FileController: {
-    'create': ['sessionAuth', 'hasJsonWebToken'],
-    'update': ['sessionAuth', 'hasJsonWebToken'],
-    'destroy': ['sessionAuth', 'hasJsonWebToken']
+    'create': ['sessionAuth'],
+    'update': ['sessionAuth'],
+    'destroy': ['sessionAuth']
   },
   ServiceController: {
-    'create': ['sessionAuth', 'hasJsonWebToken'],
-    'update': ['sessionAuth', 'hasJsonWebToken'],
-    'destroy': ['sessionAuth', 'hasJsonWebToken']
+    'create': ['sessionAuth'],
+    'update': ['sessionAuth'],
+    'destroy': ['sessionAuth']
   }
   
   // '*': [ 'hasJsonWebToken' ],

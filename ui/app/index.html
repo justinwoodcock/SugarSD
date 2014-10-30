@@ -2,7 +2,7 @@
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><html class="no-js"> <![endif]-->
 <head>
     <meta charset="utf-8">
     <title>Sugar San Diego</title>
@@ -11,10 +11,10 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css css/vendor.css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
+    <link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" rel="stylesheet" />
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) css/style.css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">    
     <!-- endbuild -->
 </head>
 <body id="{{state.name}}" ng-app="sugar" ng-controller="SugarController" ng-cloak>
@@ -29,7 +29,7 @@
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
+    <!--[endif]-->
     <script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
     <!-- build:js js/vendor.js -->
     <script src="bower_components/ng-file-upload/angular-file-upload-html5-shim.min.js"></script>
@@ -56,7 +56,6 @@
     <script src="components/global/auth.factory.js"></script>
     <script src="components/global/sugar.controller.js"></script>
     <script src="components/sections/sections.controller.js"></script>
-    <!-- <script src="components/admin/admin.controller.js"></script> -->
     <script src="components/admin/images.controller.js"></script>
     <script src="components/admin/sections.controller.js"></script>
     <script src="components/admin/services.controller.js"></script>
