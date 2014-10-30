@@ -25,7 +25,7 @@ module.exports = function(grunt) {
                 tasks: ['bowerInstall']
             },
             js: {
-                files: ['<%= config.app %>/components/**/*.js', '<%= config.app %>/app.js'],
+                files: ['<%= config.app %>/components/**/*.js', '<%= config.app %>/sugar.js'],
                 tasks: ['newer:jshint:all'],
                 options: {
                     livereload: true
@@ -368,8 +368,8 @@ module.exports = function(grunt) {
         'cssmin',
         'uglify',
         'rev',
-        'usemin',
-        'htmlmin'
+        'usemin'
+        // 'htmlmin'
     ]);
 
     grunt.registerTask('default', [
