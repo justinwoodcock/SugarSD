@@ -36,7 +36,7 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/header/admin.html'
             },
             footer: {
-                templateUrl: 'components/footer/index.html'
+                templateUrl: 'components/footer/admin.html'
             }
         },
         authenticate: true
@@ -47,7 +47,7 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/header/admin.html'
             },
             footer: {
-                templateUrl: 'components/footer/index.html'
+                templateUrl: 'components/footer/admin.html'
             },
             content: {
                 templateUrl: 'components/admin/images.html',
@@ -62,7 +62,7 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/header/admin.html'
             },
             footer: {
-                templateUrl: 'components/footer/index.html'
+                templateUrl: 'components/footer/admin.html'
             },
             content: {
                 templateUrl: 'components/admin/sections.html',
@@ -77,7 +77,7 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/header/admin.html'
             },
             footer: {
-                templateUrl: 'components/footer/index.html'
+                templateUrl: 'components/footer/admin.html'
             },
             content: {
                 templateUrl: 'components/admin/services.html',
@@ -92,7 +92,7 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/header/admin.html'
             },
             footer: {
-                templateUrl: 'components/footer/index.html'
+                templateUrl: 'components/footer/admin.html'
             },
             content: {
                 templateUrl: 'components/admin/specials.html',
@@ -107,7 +107,7 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
                 templateUrl: 'components/header/admin.html'
             },
             footer: {
-                templateUrl: 'components/footer/index.html'
+                templateUrl: 'components/footer/admin.html'
             },
             content: {
                 templateUrl: 'components/admin/contact.html',

@@ -38,7 +38,6 @@ sugar.factory('SugarFactory', ['Restangular',
             },
             getStorage: function() {
                 var data = localStorage.getItem('sugar');
-                console.log(data);
                 if (data == null || typeof(data) === 'undefined' || _.isEmpty(data) || data.toString() === '[object Object]') {
                     return {};
                 }
@@ -53,7 +52,6 @@ sugar.factory('SugarFactory', ['Restangular',
             },
             sendEmail: function(email) {
                 Restangular.all('email').post(email).then(function(data) {
-                    console.log('email sent');
                     return true;
                 }, function(data) {
                     console.log(data);

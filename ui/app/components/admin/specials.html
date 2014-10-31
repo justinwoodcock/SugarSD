@@ -39,8 +39,8 @@
                                 </div>
                             </div>
                             <div class="form-group col-xs-12">
-                                <button class="btn btn-primary" type="submit" ng-click="create()" ng-show="true">Save special</button>
-                                <button class="btn btn-primary" type="submit" ng-click="edit()" ng-show="edit===true">Update special</button>
+                                <button class="btn btn-primary" type="submit" ng-click="create()" ng-show="edit===false">Save special</button>
+                                <button class="btn btn-primary" type="submit" ng-click="editItem()" ng-show="edit===true">Update special</button>
                                 <button class="btn btn-secondary pull-right" ng-click="showForm=false;" ng-show="edit || showForm">Cancel</button>
                             </div>
                         </div>
@@ -49,23 +49,21 @@
             </div>
             <div class="admin-section" ng-hide="showForm">
                 <table ng-table="tableParams" class="table">
-                    <tbody>
-                        <tr ng-hide="group.$hideRows" ng-repeat="item in group.data">
-                            <td sortable="title" data-title="'Title'" class="title">
-                                {{item.title}}
-                            </td>
-                            <td sortable="price" data-title="'Price'" class="price">
-                                ${{item.price}}
-                            </td>
-                            <td sortable="description" data-title="'Description'" class="description">
-                                {{item.description}}
-                            </td>
-                            <td data-title="'Actions'">
-                                <i class="icon-pencil" ng-click="selectItemToEdit(item, $index)"></i>
-                                <i class="icon-trash" ng-click="delete(item)"></i>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tr ng-repeat="item in $data">
+                        <td sortable="title" data-title="'Title'" class="title">
+                            {{item.title}}
+                        </td>
+                        <td sortable="price" data-title="'Price'" class="price">
+                            ${{item.price}}
+                        </td>
+                        <td sortable="description" data-title="'Description'" class="description">
+                            {{item.description}}
+                        </td>
+                        <td data-title="'Actions'">
+                            <i class="icon-pencil" ng-click="selectItemToEdit(item, $index)"></i>
+                            <i class="icon-trash" ng-click="delete(item)"></i>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>

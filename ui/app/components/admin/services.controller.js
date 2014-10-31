@@ -34,20 +34,15 @@ sugar.controller('AdminServicesController', ['$scope', 'SugarFactory', '$filter'
         }
 
         $scope.selectItemToEdit = function(item) {
-            console.log(item);
-            //$scope.serviceToEdit = index;
             $scope.service = item;
-            //$scope.service.category
             $scope.showForm = true;
             $scope.edit = true;
         };
 
         $scope.editService = function() {
-            console.log($scope.service);
             var restangularItem = _.filter($scope.ServiceEntity, {
                 'id': $scope.service.id
             });
-            console.log(restangularItem);
             restangularItem[0] = _.merge(restangularItem[0], $scope.service);
             restangularItem[0].put().then(function(data) {
                 $scope.showForm = false;

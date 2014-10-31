@@ -7,6 +7,7 @@ sugar.factory('AuthFactory', ['Restangular', 'SugarFactory',
                 var self = this;
                 Restangular.one('auth', 'login').get(creds).then(function(data) {
                     //self.getToken();
+                    hasAuth = true;
                 }, function(data) {
                     console.log(data);
                 });

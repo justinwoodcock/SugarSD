@@ -27,32 +27,29 @@ sugar.controller('AdminSpecialsController', ['$scope', 'SugarFactory', '$filter'
         };
 
         $scope.selectItemToEdit = function(item) {
-            console.log(item);
-            $scope.service = item;
+            $scope.special = item;
             $scope.showForm = true;
             $scope.edit = true;
         };
 
-        $scope.edit = function() {
-            console.log($scope.service);
-            var restangularItem = _.filter($scope.ServiceEntity, {
-                'id': $scope.service.id
+        $scope.editItem = function() {
+            var restangularItem = _.filter($scope.SpecialEntity, {
+                'id': $scope.special.id
             });
-            console.log(restangularItem);
-            restangularItem[0] = _.merge(restangularItem[0], $scope.service);
+            restangularItem[0] = _.merge(restangularItem[0], $scope.special);
             restangularItem[0].put().then(function(data) {
                 $scope.showForm = false;
                 $scope.edit = false;
-                $scope.service = {};
+                $scope.special = {};
                 $scope.alert = {
                     show: true,
-                    message: 'The service has been successfully updated!',
+                    message: 'The special has been successfully updated!',
                     type: 'success'
                 };
                 clearAlert();
-                getServiceEntity();
+                getSpecialEntity();
             }, function(data) {
-                $scope.service = {};
+                $scope.special = {};
                 $scope.alert = {
                     show: true,
                     message: 'Oops, something went wrong! Please try again.',
@@ -63,16 +60,16 @@ sugar.controller('AdminSpecialsController', ['$scope', 'SugarFactory', '$filter'
         };
 
         $scope.create = function() {
-            $scope.SpecialEntity.post($scope.service).then(function(data) {
+            $scope.SpecialEntity.post($scope.special).then(function(data) {
                 $scope.alert = {
                     show: true,
-                    message: 'The service has been successfully added!',
+                    message: 'The special has been successfully added!',
                     type: 'success'
                 };
                 clearAlert();
                 $scope.showForm = false;
-                $scope.service = {};
-                getServiceEntity();
+                $scope.special = {};
+                getSpecialEntity();
             }, function(data) {
                 console.log(data);
                 $scope.alert = {
@@ -117,19 +114,26 @@ sugar.controller('AdminSpecialsController', ['$scope', 'SugarFactory', '$filter'
         };
 
         function initTable() {
+
             $scope.tableParams = new ngTableParams({
                 page: 1, // show first page
-                count: 10 // count per page
+                count: 10, // count per page
+                sorting: {
+                    name: 'asc' // initial sorting
+                }
             }, {
-                total: $scope.specials.length,
+                total: $scope.specials.length, // length of data
                 getData: function($defer, params) {
+                    // use build-in angular filter
                     var orderedData = params.sorting() ?
-                        $filter('orderBy')($scope.specials, $scope.tableParams.orderBy()) :
+                        $filter('orderBy')($scope.specials, params.orderBy()) :
                         $scope.specials;
 
                     $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                 }
             });
-        };
+
+        }
+
     }
 ]);

@@ -30,7 +30,6 @@ sugar.controller('AdminController', ['$scope', 'SugarFactory', '$filter', 'ngTab
         SugarFactory.getEntity('file').then(function(data) {
             $scope.ImageEntity = data;
             $scope.images = data.plain();
-            console.log($scope.images);
         })
 
         $scope.onFileSelect = function($files) {            
@@ -44,14 +43,12 @@ sugar.controller('AdminController', ['$scope', 'SugarFactory', '$filter', 'ngTab
                 }).progress(function(evt) {
                     $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
                 }).success(function(data, status, headers, config) {
-                    console.log(data);
                     var imageObject = {
                         name: data.file[0].filename,
                         size: data.file[0].size,
                         type: data.file[0].type
                     }
                     $scope.ImageEntity.post(imageObject).then(function(data) {
-                        console.log(data);
                         $scope.images = data.plain();
                     });
                 }).error(function(data, status, headers, config) {
@@ -72,11 +69,9 @@ sugar.controller('AdminController', ['$scope', 'SugarFactory', '$filter', 'ngTab
 
         $scope.selectCategory = function(item, type) {
             $scope.service[type] = item;
-            console.log($scope);
         }
 
         $scope.selectItemToEdit = function(index) {
-            console.log(index);
             $scope.serviceToEdit = index;
         };
 
@@ -100,7 +95,6 @@ sugar.controller('AdminController', ['$scope', 'SugarFactory', '$filter', 'ngTab
             var restangularItem = _.filter($scope.ServiceEntity, {
                 'id': item.id
             });
-            console.log(restangularItem);
             restangularItem[0] = _.merge(restangularItem[0], item);
             restangularItem[0].put().then(function(data) {
                 $scope.ServiceEntity.getList().then(function(data) {

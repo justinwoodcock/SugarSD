@@ -14,9 +14,7 @@ sugar.controller('SectionsController', ['$scope', 'parallaxHelper', 'SugarFactor
         })
 
         SugarFactory.getEntity('service').then(function(data) {
-            //$scope.services = data.plain();
             sortServices(data.plain());
-            //console.log(data.plain())
         })
 
         SugarFactory.getEntity('contact').then(function(data) {
@@ -37,7 +35,6 @@ sugar.controller('SectionsController', ['$scope', 'parallaxHelper', 'SugarFactor
         };
 
         $scope.selectCategory = function(category) {
-            console.log(category);
             $scope.selectedCategory = category[0].category;
         }
 
