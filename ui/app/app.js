@@ -85,6 +85,21 @@ sugar.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             }
         },
         authenticate: true
+    }).state('admin-specials', {
+        url: '/admin/specials',
+        views: {
+            header: {
+                templateUrl: 'components/header/admin.html'
+            },
+            footer: {
+                templateUrl: 'components/footer/index.html'
+            },
+            content: {
+                templateUrl: 'components/admin/specials.html',
+                controller: 'AdminSpecialsController'
+            }
+        },
+        authenticate: true
     }).state('admin-contact', {
         url: '/admin/contact',
         views: {

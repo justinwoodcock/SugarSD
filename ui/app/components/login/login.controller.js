@@ -18,7 +18,7 @@ sugar.controller('LoginController', ['$scope', 'AuthFactory', '$state', 'SugarFa
                         token: AuthFactory.token()
                     };
                     SugarFactory.setStorage(storage);
-                    $state.go('admin-sections');
+                    $state.go('admin-specials');
                 }
             }, 750)
         };

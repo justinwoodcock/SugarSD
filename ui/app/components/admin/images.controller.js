@@ -26,12 +26,6 @@ sugar.controller('AdminImagesController', ['$scope', 'SugarFactory', '$filter', 
                 }).progress(function(evt) {
                     $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
                 }).success(function(data, status, headers, config) {
-                    console.log('data', data.file[0]);
-                    // var imageObject = {
-                    //     name: data.file[0].filename,
-                    //     size: data.file[0].size,
-                    //     type: data.file[0].type
-                    // };
                     var imageObject = data.file[0];
                     imageObject.storedAs = imageObject.fd.replace('/var/www/SugarSD/ui/dist/images/', '');
                     $scope.ImageEntity.post(imageObject).then(function(data) {
