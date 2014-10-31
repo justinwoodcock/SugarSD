@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-lg-4" ng-repeat="image in images">
                             <div class="section-preview">
-                                <div class="title pull-left">{{image.name}}</div>
+                                <div class="title pull-left">{{image.filename.split('.')[0]}}</div>
                                 <span class="pull-right action-buttons">
                                     <i ng-show="true" class="icon-link" ng-click="getLink(image)"></i>
                                     <i ng-show="true" class="icon-trash" ng-click="deleteImage(image, $index)"></i>

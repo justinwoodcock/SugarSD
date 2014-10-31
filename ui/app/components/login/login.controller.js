@@ -12,15 +12,15 @@ sugar.controller('LoginController', ['$scope', 'AuthFactory', '$state', 'SugarFa
             setTimeout(function() {
                 var hasAuth = AuthFactory.check();
                 if(hasAuth) {
-                    $state.go('admin-sections');
                     var storage = SugarFactory.getStorage();
                     storage.session = {
                         hasAuth: true,
                         token: AuthFactory.token()
                     };
                     SugarFactory.setStorage(storage);
+                    $state.go('admin-sections');
                 }
-            }, 250)
+            }, 750)
         };
         $scope.register = function() {
             var creds = {

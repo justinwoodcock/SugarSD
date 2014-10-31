@@ -38,7 +38,7 @@ sugar.controller('AdminImagesController', ['$scope', 'SugarFactory', '$filter', 
                         getImageEntity();
                         $scope.alert = {
                             show: true,
-                            message: imageObject.name + ' has been uploaded.',
+                            message: imageObject.filename + ' has been uploaded.',
                             type: 'success'
                         }
                         clearAlert();
@@ -53,7 +53,7 @@ sugar.controller('AdminImagesController', ['$scope', 'SugarFactory', '$filter', 
             $scope.ImageEntity[$index].remove().then(function(data) {
                 $scope.alert = {
                     show: true,
-                    message: image.name + ' has been deleted.',
+                    message: image.filename + ' has been deleted.',
                     type: 'success'
                 }
                 clearAlert();
@@ -62,7 +62,7 @@ sugar.controller('AdminImagesController', ['$scope', 'SugarFactory', '$filter', 
         };
 
         $scope.getLink = function(image) {
-            prompt('The image url is:', '/images/uploads/' + image.name)
+            prompt('The image url is:', '/images/' + image.storedAs)
         };
 
         function clearAlert(duration) {

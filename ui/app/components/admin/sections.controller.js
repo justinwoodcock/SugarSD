@@ -9,10 +9,13 @@ sugar.controller('AdminSectionsController', ['$scope', 'SugarFactory', '$filter'
             show: false
         };
 
-        SugarFactory.getEntity('section').then(function(data) {
-            $scope.SectionEntity = data;
-            $scope.sections = data.plain();
-        });
+        getSectionEntity();
+        function getSectionEntity() {
+            SugarFactory.getEntity('section').then(function(data) {
+                $scope.SectionEntity = data;
+                $scope.sections = data.plain();
+            });
+        };
 
         SugarFactory.getEntity('file').then(function(data) {
             $scope.images = data.plain();
@@ -20,6 +23,7 @@ sugar.controller('AdminSectionsController', ['$scope', 'SugarFactory', '$filter'
 
         $scope.create = function() {
             $scope.SectionEntity.post($scope.section).then(function(data) {
+                getSectionEntity();
                 $scope.section = {};
                 $scope.showForm = false;
                 $scope.editIndex = null;
@@ -83,7 +87,19 @@ sugar.controller('AdminSectionsController', ['$scope', 'SugarFactory', '$filter'
             $scope.section = {};
             $scope.editIndex = null;
             $scope.showForm = false;
-        }
+        };
+
+        $scope.delete = function(item, $index) {
+            $scope.SectionEntity[$index].remove().then(function(data) {
+                $scope.alert = {
+                    show: true,
+                    message: 'The ' + item.title + ' section has been deleted.',
+                    type: 'success'
+                }
+                clearAlert();
+                getSectionEntity();
+            })
+        };
 
         function clearAlert(duration) {
             if(!duration) var duration = 5000;
