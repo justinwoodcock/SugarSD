@@ -1,0 +1,73 @@
+<div class="container" id="view-main">
+    <div id="alert-fixed" class="alert alert-{{alert.type}}" role="alert" ng-show="alert.show">
+        <span class="alert-message">{{alert.message}}</span>
+        <button type="button" class="close" ng-click="alert.show=false"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="admin-section">
+                <h1>Specials</h1>
+                <p>This is the place where you do the things.</p>
+            </div>
+            <div class="admin-section action-buttons">
+                <button class="btn btn-primary" ng-click="showForm=true">Add new special</button>
+                <button class="btn btn-secondary" ng-click="showForm=false;" ng-show="edit || showForm">Cancel</button>
+            </div>
+            <div ng-show="showForm">
+                <div class="admin-section">
+                    <form name="specials" novalidate>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="special-title">Title</label>
+                                    <input type="text" name="special-title" id="special-title" class="form-control" ng-model="special.title" />
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="special-price">Price</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">$</span>
+                                        <input type="text" name="special-price" id="special-price" class="form-control" ng-model="special.price" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="special-description">Description</label>
+                                    <textarea type="text" name="special-description" id="special-description" class="form-control" rows="5" ng-model="special.description"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <button class="btn btn-primary" type="submit" ng-click="create()" ng-show="showForm===true && !edit">Save special</button>
+                                <button class="btn btn-primary" type="submit" ng-click="edit()" ng-show="edit===true">Update special</button>
+                                <button class="btn btn-secondary pull-right" ng-click="showForm=false;" ng-show="edit || showForm">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="admin-section" ng-hide="showForm">
+                <table ng-table="tableParams" class="table">
+                    <tbody>
+                        <tr ng-hide="group.$hideRows" ng-repeat="item in group.data">
+                            <td sortable="title" data-title="'Title'" class="title">
+                                {{item.title}}
+                            </td>
+                            <td sortable="price" data-title="'Price'" class="price">
+                                ${{item.price}}
+                            </td>
+                            <td sortable="description" data-title="'Description'" class="description">
+                                {{item.description}}
+                            </td>
+                            <td data-title="'Actions'">
+                                <i class="icon-pencil" ng-click="selectItemToEdit(item, $index)"></i>
+                                <i class="icon-trash" ng-click="delete(item)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

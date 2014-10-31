@@ -1,0 +1,97 @@
+<section id="panel-{{section.title}}" class="sugar-panel" ng-repeat="section in sections">
+    <img class="img-parallax" ng-src="images/{{section.bgImage}}" width="100%" du-parallax y="background">
+    <div class="sugar-content">
+        <div class="container">
+            <div class="row">
+                <div ng-bind-html="section.content"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="panel-services" class="sugar-panel">
+    <img class="img-parallax" width="100%" du-parallax y="background" src="images/inside.jpg">
+    <div class="sugar-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="clearfix">
+                        <h2 class="pull-left">Services<span ng-show="selectedCategory.length>0"> / {{selectedCategory}}</span></h2>
+                        <div class="pull-right category-buttons">
+                            <button class="btn btn-primary" ng-repeat="service in services" ng-click="selectCategory(service)" ng-class="{active: service[0].category===selectedCategory}">{{service[0].category}}</button>
+                        </div>
+                    </div>
+                    <!-- <p>Select a service category to the right to view available services. Click on a service below to book an appointment.</p> -->
+                </div>
+                <div class="col-xs-12" ng-show="selectedCategory===service[0].category" ng-repeat="service in services">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="item in service">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" ng-click="openBooking()">
+                                    <h3 class="panel-title">
+                                        {{item.title}}
+                                        <span class="pull-right">${{item.price}}</span>
+                                    </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        {{item.description}}
+                                    </p>
+                                    <button class="btn btn-secondary pull-right" ng-click="openBooking()">Book now</button>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="panel-contact" class="sugar-panel">
+    <div id="map" class="img-parallax"></div>
+    <div class="sugar-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Contact</h2>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <dl class="contact-list">
+                        <dt><i class="icon-map"></i> Address</dt>
+                        <dd>
+                        {{contact.address}}<br/>
+                        {{contact.city}}, {{contact.state}} {{contact.zip}}<br/>
+                        <a class="btn btn-primary btn-directions" href="https://www.google.com/maps/dir//1240+San+Elijo+Rd+N,+San+Marcos,+CA+92078/@33.099112,-117.2031788,17z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x80dc0aebb345f0c7:0xb299a52220fa0b3c!2m2!1d-117.201033!2d33.099112" target="_blank">
+                            <i class="icon-map"></i>Get Directions
+                        </a>
+                        </dd>
+                        <dt><i class="icon-mobile"></i> Phone</dt>
+                        <dd>{{contact.phone}}</dd>
+                        <dt><i class="icon-mail"></i> Email</dt>
+                        <dd>{{contact.email}}</dd>
+                    </dl>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <form role="form" ng-submit="sendEmail()" ng-hide="formSubmitted">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Message</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter message" ng-model="message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <div class="alert alert-info" role="alert" ng-show="formSubmitted">
+                        <h3>Your email message has been sent!</h3>
+                        <p>I will get back to you as soon as I can, thank you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
