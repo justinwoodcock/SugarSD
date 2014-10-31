@@ -10,4 +10,4 @@ package.json
 .bowerrc
 .jshintrc
 Gruntfile.js
-ui/app
+app
