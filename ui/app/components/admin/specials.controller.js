@@ -124,7 +124,7 @@ sugar.controller('AdminSpecialsController', ['$scope', 'SugarFactory', '$filter'
                 total: $scope.specials.length,
                 getData: function($defer, params) {
                     var orderedData = params.sorting() ?
-                        $filter('orderBy')($scope.services, $scope.tableParams.orderBy()) :
+                        $filter('orderBy')($scope.specials, $scope.tableParams.orderBy()) :
                         $scope.specials;
 
                     $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));

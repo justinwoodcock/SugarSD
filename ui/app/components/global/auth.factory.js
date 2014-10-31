@@ -6,7 +6,7 @@ sugar.factory('AuthFactory', ['Restangular', 'SugarFactory',
             login: function(creds) {
                 var self = this;
                 Restangular.one('auth', 'login').get(creds).then(function(data) {
-                    self.getToken();
+                    //self.getToken();
                 }, function(data) {
                     console.log(data);
                 });
@@ -25,13 +25,13 @@ sugar.factory('AuthFactory', ['Restangular', 'SugarFactory',
             },
             logout: function() {
                 Restangular.one('auth', 'logout').get().then(function(data) {
-                    Restangular.setDefaultHeaders({
-                        access_token: null
-                    });
+                    // Restangular.setDefaultHeaders({
+                    //     access_token: null
+                    // });
                     hasAuth = false;
                     var storage = SugarFactory.getStorage();
                     storage.session.hasAuth = false;
-                    storage.session.token = null;
+                    // storage.session.token = null;
                     SugarFactory.setStorage(storage);
                 }, function(data) {
                     console.log(data);

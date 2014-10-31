@@ -47,6 +47,11 @@ module.exports.policies = {
     'create': ['sessionAuth'],
     'update': ['sessionAuth'],
     'destroy': ['sessionAuth']
+  },
+  SpecialController: {
+    'create': ['sessionAuth'],
+    'update': ['sessionAuth'],
+    'destroy': ['sessionAuth']
   }
   
   // '*': [ 'hasJsonWebToken' ],

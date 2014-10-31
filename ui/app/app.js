@@ -154,13 +154,13 @@ sugar.run(['$rootScope', '$state', 'AuthFactory', 'Restangular',
     function($rootScope, $state, AuthFactory, Restangular) {
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
             var hasAuth = AuthFactory.check();
-            var token = AuthFactory.token();
-            if (token.length === 0  && hasAuth) {
-                token = AuthFactory.getToken();
-                Restangular.setDefaultHeaders({
-                    access_token: token
-                });
-            }
+            // var token = AuthFactory.token();
+            // if (token.length === 0  && hasAuth) {
+            //     token = AuthFactory.getToken();
+            //     Restangular.setDefaultHeaders({
+            //         access_token: token
+            //     });
+            // }
             if (toState.authenticate && !hasAuth) {
                 // User isn’t authenticated
                 $state.go('login');
