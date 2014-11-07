@@ -12,7 +12,7 @@ module.exports = {
 
       var uploadFile = req.file('files');
 
-      uploadFile.upload({ dirname: '/var/www/SugarSD/images'}, function onUploadComplete (err, files) {
+      uploadFile.upload({ dirname: '/var/www/SugarSD/ui/dist/images'}, function onUploadComplete (err, files) {
                                                                               
           if (err) return res.serverError(err);                              // IF ERROR Return and send 500 error with error
           
