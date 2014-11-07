@@ -17,7 +17,7 @@
                     <div class="clearfix">
                         <h2 class="pull-left">Services<span ng-show="selectedCategory.length>0"> / {{selectedCategory}}</span></h2>
                         <div class="pull-right category-buttons">
-                            <button class="btn btn-primary" ng-repeat="service in services" ng-click="selectCategory(service)" ng-class="{active: service[0].category===selectedCategory}">{{service[0].category}}</button>
+                            <button class="btn btn-secondary" ng-repeat="service in services" ng-click="selectCategory(service)" ng-class="{active: service[0].category===selectedCategory}">{{service[0].category}}</button>
                         </div>
                     </div>
                     <!-- <p>Select a service category to the right to view available services. Click on a service below to book an appointment.</p> -->
