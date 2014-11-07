@@ -9,9 +9,8 @@ sugar.controller('LoginController', ['$scope', 'AuthFactory', '$state', 'SugarFa
                 password: $scope.password
             };
             AuthFactory.login(creds);
-            setTimeout(function() {
-                var hasAuth = AuthFactory.check();
-                if(hasAuth) {
+            //setTimeout(function() {
+                if(AuthFactory.check()) {
                     var storage = SugarFactory.getStorage();
                     storage.session = {
                         hasAuth: true,
@@ -20,7 +19,7 @@ sugar.controller('LoginController', ['$scope', 'AuthFactory', '$state', 'SugarFa
                     SugarFactory.setStorage(storage);
                     $state.go('admin-specials');
                 }
-            }, 750)
+            //}, 750)
         };
         $scope.register = function() {
             var creds = {
