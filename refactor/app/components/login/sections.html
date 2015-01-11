@@ -1,0 +1,45 @@
+<div class="container" id="view-main">
+    <div id="alert-fixed" class="alert alert-{{alert.type}}" role="alert" ng-show="alert.show">
+        <span class="alert-message">{{alert.message}}</span>
+        <button type="button" class="close" ng-click="alert.show=false"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Admin</h1>
+            <p>This is the place where you do the things.</p>
+        </div>
+        <div class="col-xs-12 admin-section">
+            <h2>Sections</h2>
+            <button class="btn btn-secondary" ng-click="addSection()">Add new section</button>
+            <button class="btn btn-secondary" ng-click="editMode()">Edit a section</button>
+            <div id="sections-preview" class="admin-section">
+                <p>Choose a section to edit</p>
+                <div class="row">
+                    <div class="col-sm-6 col-md-3" ng-repeat="item in sections" ng-click="editSection(item, $index)">
+                        <div class="section-preview">
+                            <div class="title pull-left">{{item.title}}</div>
+                            <i class="pull-right" ng-class="{'icon-check': editIndex===$index, 'icon-check-empty': editIndex!==$index}"></i>
+                            <img ng-src="images/{{item.bgImage}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form name="admin" class="admin-section" novalidate>
+                <div class="form-group">
+                    <label for="section-bg-image">Background Image</label>
+                    <input type="text" name="section-bg-image" id="section-bg-image" class="form-control" ng-model="section.bgImage" />
+                </div>
+                <div class="form-group">
+                    <label for="section-title">Section Title</label>
+                    <input type="text" name="section-title" id="section-title" class="form-control" ng-model="section.title" />
+                </div>
+                <div class="form-group">
+                    <label for="section-content">Content</label>
+                    <text-angular ng-model="section.content" id="section-content"></text-angular>
+                </div>
+                <button class="btn btn-primary" type="submit" ng-click="create()" ng-show="edit===false">Add section</button>
+                <button class="btn btn-primary" type="submit" ng-click="update()" ng-show="edit===true">Update section</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -10,18 +10,14 @@
                 <button type="button" class="navbar-toggle" ng-click="navbarCollapsed=!navbarCollapsed">
                     <i class="icon-menu"></i>
                 </button>
-                <nav class="collapse navbar-collapse pull-left" collapse="navbarCollapsed=true">
+                <nav class="collapse navbar-collapse pull-left" collapse="navbarCollapsed">
                     <ul class="nav navbar-nav">
-                        <li><a href="#panel-sugaring" du-smooth-scroll du-scrollspy>What is Sugaring</a></li>
-                        <li><a href="#panel-sunless-tanning" du-smooth-scroll du-scrollspy>Sunless Tanning</a></li>
-                        <li><a href="#panel-preparation" du-smooth-scroll du-scrollspy>Preparation</a></li>
-                        <li><a href="#panel-products" du-smooth-scroll du-scrollspy>Products</a></li>
+                        <li><a href="#panel-sugaring" du-smooth-scroll du-scrollspy><span class="hidden-sm">What is </span>Sugaring</a></li>
+                        <li><a href="#panel-sunless-tanning" du-smooth-scroll du-scrollspy><span class="hidden-sm">Sunless </span>Tanning</a></li>
+                        <li><a href="#panel-preparation" du-smooth-scroll du-scrollspy>Prep<span class="hidden-sm">aration</span></a></li>
                         <li><a href="#panel-services" du-smooth-scroll du-scrollspy>Services</a></li>
                         <li><a href="#panel-contact" du-smooth-scroll du-scrollspy>Contact</a></li>
-                        <li ng-show="navbarCollapsed=false"><a href="https://www.schedulicity.com/Scheduling/Default.aspx?business=SSDQQG#/services" target="_blank">Book an Appointment</a></li>
-                    </ul>
-                </nav>
-                <button class="btn btn-primary book-appointment pull-left" ng-show="navbarCollapsed=true" ng-click="openBooking()">Book an Appointment</button>
+                        <!-- <li ng-show="navbarCollapsed=false"><a href="https://www.sc" ng-click="openBooking()">Book an Appointment</button>
             </div>
         </div>
     </div>

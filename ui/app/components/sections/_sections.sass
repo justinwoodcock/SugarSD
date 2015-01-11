@@ -39,13 +39,15 @@
         bottom: 0
 
 #panel-services
+    .sugar-content
+        top: 20%
     h2
         span
             color: #000
     p
         margin-bottom: 20px
     .category-buttons
-        margin: 18px 0 20px 0
+        margin: 18px 0 30px 0
         .btn
             margin-left: 10px
     .panel
@@ -53,7 +55,17 @@
             background: #fff
             border: none
             color: $theme-primary
-            font-size: 20px
+            padding-top: 15px
+            .panel-title
+                font-size: 20px
+        .panel-body
+            .btn-primary
+                background: $theme-primary
+                color: #fff
+                &:hover
+                    background: transparent
+                    color: $theme-primary
+                    border-color: $theme-primary
 
 #panel-contact
     .leaflet-top.leaflet-left
@@ -92,9 +104,24 @@
             p
                 margin-bottom: 20px
 
+#panel-products
+    display: none
+
 #panel-sunless-tanning
     .sugar-content
         top: 25%
         img
             border: 2px solid white
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.15)
+
+.modal
+    .modal-dialog
+        margin: 82px auto 0 auto
+    &.appointments
+        .modal-close
+            //top: 50px
+            //right: 50px
+            top: 11px
+            right: 14px
+            font-size: 18px
+            color: $theme-primary

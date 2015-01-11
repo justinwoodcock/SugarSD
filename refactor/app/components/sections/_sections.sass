@@ -1,0 +1,127 @@
+.sugar-panel
+    position: relative
+    width: 100%
+    height: 150%
+    overflow: hidden
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7)
+    .img-parallax
+        height: 100%
+        width: auto
+    .sugar-content
+        width: 100%
+        // min-height: 30%
+        position: absolute
+        z-index: 11
+        //top: 30%
+        padding: 40px 0
+        background: rgba(255, 255, 255, 0.8)
+        box-shadow: 0 0 28px rgba(0, 0, 0, 0.35)
+        h2
+            margin-bottom: 20px
+            color: $theme-primary
+        p
+            line-height: 165%
+
+#panel-home
+    height: 100%
+    .sugar-content
+        h1
+            margin: 30px 0 0 0
+
+#panel-sugaring
+    //background-image: url(../images/photodune-6960354-brown-sugar-s.jpg)
+
+#panel-products
+    .img-parallax
+        position: absolute
+        left: -35%
+        width: 135%
+        bottom: 0
+
+#panel-services
+    .sugar-content
+        top: 20%
+    h2
+        span
+            color: #000
+    p
+        margin-bottom: 20px
+    .category-buttons
+        margin: 18px 0 30px 0
+        .btn
+            margin-left: 10px
+    .panel
+        .panel-heading
+            background: #fff
+            border: none
+            color: $theme-primary
+            padding-top: 15px
+            .panel-title
+                font-size: 20px
+        .panel-body
+            .btn-primary
+                background: $theme-primary
+                color: #fff
+                &:hover
+                    background: transparent
+                    color: $theme-primary
+                    border-color: $theme-primary
+
+#panel-contact
+    .leaflet-top.leaflet-left
+        bottom: 62px
+        left: auto
+        right: 50px !important
+    #map
+        width: 100%
+        height: 100%
+        .leaflet-control-zoom.leaflet-bar.leaflet-control
+            bottom: 10px
+            position: absolute
+        .leaflet-control-attribution
+            display: none
+    .sugar-content
+        .btn
+            font-size: 12px
+            padding-left: 12px
+            padding-top: 9px
+            i
+                margin-right: 6px
+                position: relative
+                top: -1px
+        .btn-directions
+            margin: 10px 0
+        .contact-list
+            dt
+                font-size: 16px
+                font-weight: 400
+                margin-bottom: 4px
+                color: $theme-secondary
+            dd
+                padding-left: 27px
+                margin-bottom: 12px
+        .alert
+            p
+                margin-bottom: 20px
+
+#panel-products
+    display: none
+
+#panel-sunless-tanning
+    .sugar-content
+        top: 25%
+        img
+            border: 2px solid white
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.15)
+
+.modal
+    .modal-dialog
+        margin: 82px auto 0 auto
+    &.appointments
+        .modal-close
+            //top: 50px
+            //right: 50px
+            top: 11px
+            right: 14px
+            font-size: 18px
+            color: $theme-primary

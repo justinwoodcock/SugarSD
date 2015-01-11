@@ -1,0 +1,178 @@
+@media (max-width: $screen-xs-max)
+    .sugar-content
+        top: 10%
+        h2
+            margin-top: 0
+    #panel-home
+        .sugar-content
+            h1
+                font-size: 28px
+    #panel-sunless-tanning
+        height: 210%
+        .sugar-content
+            top: 10%
+    #panel-services
+        .sugar-content
+            top: 15%
+            h2
+                margin-top: 3px
+        .btn-group
+            padding: 1px
+            margin: 2px
+            font-size: 18px
+        .dropdown-menu
+            padding: 8px 20px
+            li
+                text-align: right
+                margin: 10px 0
+                font-size: 18px
+        .service-list
+            li
+                margin: 10px 0
+                font-size: 20px
+                .service-price
+                    margin-right: 5px
+                    color: $theme-secondary
+                p
+                    color: #000
+    #panel-contact
+        height: 200%
+        .leaflet-control-zoom
+            display: none
+    #modal-content
+        border: 1px solid #000
+    // nav styles
+    .navbar-collapse.collapse, .navbar-collapse.collapsing
+        transition: height 200ms ease-in
+        height: 0
+        &.in
+            height: auto
+        .nav
+            height: 100%
+            li
+                height: auto !important
+                text-align: center !important
+                margin: 2px !important
+                padding: 2px !important
+                a
+                    margin: auto !important
+                    font-size: 16px
+                    border: 1px solid transparent
+                    padding: 12px !important
+                    &:hover
+                        background-color: transparent
+                    &.active
+                        border: 1px solid $theme-secondary
+                        background: $theme-secondary
+                        color: #fff
+                        //border-bottom: 2px solid darken($theme-secondary, 5%)
+                        //border-radius: 2px
+                &.li-book
+                    padding: 2px      
+            .book-appointment
+                width: 100%
+                display: block
+                font-size: 18px
+                padding: 12px 0
+                margin-left: 1px !important
+    #footer
+        .buttons
+            .btn
+                margin-left: 0
+    // specials modal
+    .specials
+    .modal-dialog
+        width: 100%
+        max-width: 100%
+        .modal-close
+            top: -150px
+            right: -30px
+            color: $theme-primary
+            padding: 20px
+            font-weight: bold
+            font-size: 16px
+@media (min-width: $screen-sm-min)
+    .sugar-content
+        top: 30%
+    .sugar-panel
+        height: 150%
+        //top: 30%
+        .img-parallax
+            min-width: 100%
+            width: 100%
+    #panel-products
+        .img-parallax
+            position: absolute
+            left: -15%
+            width: 115%
+    .appointments
+        .modal-dialog
+            width: 90%
+    .specials
+        .modal-content
+            li
+                margin-bottom: 22px
+                font-size: 15px
+                line-height: 25px
+            .title
+                font-size: 15px
+        .modal-dialog
+            width: 960px
+            height: 584px
+        #specials
+            padding: 160px 40px 40px 80px
+            .chalkBook
+                font-size: 17px
+@media (max-width: $screen-sm-max)
+    .appointments
+        .modal-dialog
+            width: 90%
+    .specials
+        .modal-content
+            li
+                margin-bottom: 12px
+                font-size: 12px
+                line-height: 22px
+            .title
+                font-size: 13px
+        #specials
+            padding: 160px 40px 40px 80px
+            .chalkBook
+                margin: 20px 0 0 -28px
+                font-size: 13px
+@media (min-width: $screen-md-min)
+    header
+        #logo
+            //margin-top: 18px
+        .navbar-collapse.collapse
+            width: auto
+            .nav
+                margin-right: 0
+                li
+                    a
+                        font-size: 14px
+        .book-appointment
+            display: inline-block
+            font-size: 14px
+    .appointments
+        .modal-dialog
+            width: 960px
+    .specials
+        .modal-dialog
+            width: 960px
+            height: 554px
+@media (max-width: $screen-md-max)
+    header
+        
+@media (min-width: $screen-lg-min)
+    .appointments
+        .modal-dialog
+            width: 960px
+    .specials
+        .modal-dialog
+            width: 960px
+            height: 554px
+    header
+        #logo
+            margin-top: 10px
+    

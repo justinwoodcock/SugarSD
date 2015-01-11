@@ -1,0 +1,68 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Sugar San Diego</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <!-- build:css({.tmp,app}) css/style.css -->
+    <link rel="stylesheet" href="../bower_components/animate.css/animate.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endbuild -->
+</head>
+<body id="{{state.name}}" ng-app="sugar" ng-controller="SugarController" ng-cloak>
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header id="header" ui-view="header"></header>
+    <section id="content" class="animated" ui-view="content"></section>
+    <footer id="footer" ui-view="footer"></footer>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <!--[endif]-->
+    <script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
+    <!-- build:js(.) js/vendor.js -->
+    <script src="bower_components/ng-file-upload/angular-file-upload-html5-shim.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="bower_components/restangular/src/restangular.js"></script>    
+    <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+    <!-- <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script> -->
+    <script src="bower_components/ng-table/ng-table.min.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
+    <script src="bower_components/ng-parallax/angular-parallax.min.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
+    <script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
+    <!-- <script src="bower_components/dropzone/downloads/dropzone.min.js"></script> -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) js/sugar.js -->
+    <script src="app.js"></script>
+    <script src="components/global/sugar.factory.js"></script>
+    <script src="components/global/auth.factory.js"></script>
+    <script src="components/global/sugar.controller.js"></script>
+    <script src="components/global/specials.controller.js"></script>
+    <script src="components/sections/sections.controller.js"></script>
+    <script src="components/admin/images.controller.js"></script>
+    <script src="components/admin/sections.controller.js"></script>
+    <script src="components/admin/services.controller.js"></script>
+    <script src="components/admin/specials.controller.js"></script>
+    <script src="components/admin/contact.controller.js"></script>
+    <script src="components/login/login.controller.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

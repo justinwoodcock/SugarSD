@@ -1,0 +1,53 @@
+<div class="container" id="view-main">
+    <div id="alert-fixed" class="alert alert-{{alert.type}}" role="alert" ng-show="alert.show">
+        <span class="alert-message">{{alert.message}}</span>
+        <button type="button" class="close" ng-click="alert.show=false"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="admin-section">
+                <h1>Sections</h1>
+                <p>Click an existing section to edit, or add a new section by clicking the button below.</p>
+            </div>
+            <div class="admin-section action-buttons">
+                <button class="btn btn-primary" ng-click="addSection()" ng-hide="edit || showForm">Add new section</button>
+                <button class="btn btn-secondary" ng-click="cancel()" ng-show="edit || showForm">Cancel</button>
+            </div>
+            <div id="sections-preview" class="admin-section" ng-hide="showForm && !edit">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4" ng-repeat="item in sections" ng-hide="edit===true && $index !== editIndex">
+                        <div class="section-preview">
+                            <div class="title pull-left">{{item.title}}</div>
+                            <div class="pull-right action-buttons">
+                                <i ng-show="true" class="icon-trash" ng-click="delete(item, $index)"></i>
+                                <i class="icon-pencil" ng-click="editSection(item, $index)" ng-hide="edit===true"></i>
+                            </div>
+                            <img ng-src="images/{{item.bgImage}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form name="admin" class="admin-section" novalidate ng-show="edit || showForm">
+                <div class="form-group">
+                    <label for="section-bg-image">Background Image</label>
+                    <input type="text" name="section-bg-image" id="section-bg-image" class="form-control" ng-model="section.bgImage" typeahead="image.storedAs as image.filename for image in images | filter:{filename: $viewValue} | limitTo:8" />
+                </div>
+                <div class="form-group">
+                    <label for="section-title">Section Title</label>
+                    <input type="text" name="section-title" id="section-title" class="form-control" ng-model="section.title" />
+                </div>
+                <div class="form-group">
+                    <label for="section-content">Content</label>
+                    <text-angular ng-model="section.content" id="section-content"></text-angular>
+                </div>
+                <div class="form-group">
+                    <label for="section-order">Order</label>
+                    <input type="number" name="section-order" id="section-order" class="form-control" ng-model="section.order" size="2" />
+                </div>
+                <button class="btn btn-primary" type="submit" ng-click="create()" ng-show="edit===false">Save section</button>
+                <button class="btn btn-primary" type="submit" ng-click="update()" ng-show="edit===true">Save section</button>
+                <button class="btn btn-secondary pull-right" ng-click="cancel()" ng-show="edit || showForm">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

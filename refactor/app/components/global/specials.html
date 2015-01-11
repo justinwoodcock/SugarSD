@@ -1,0 +1,13 @@
+<div id="specials" ng-controller="SpecialsController">
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="modal-close" ng-click="closeSpecials()"><i class="fa fa-close"></i> close</button>
+            <ol>
+                <li ng-repeat="special in specials">
+                <span class="title">{{special.title}} </span><span class="description">{{special.description}}</span>
+                </li>
+            </ol>
+            <button class="chalkBook chalk" ng-click="book()"><span class="underline">Book now</span> - click here to book an appointment.</button>
+        </div>
+    </div>
+</div>

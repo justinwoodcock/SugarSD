@@ -14,22 +14,23 @@ module.exports = {
             res.send(500);
         }
 
-        // create reusable transporter object using SMTP transport
         var transporter = nodemailer.createTransport({
-            service: 'Gmail',
+            service: 'Mandrill',
+            host: 'smtp.mandrillapp.com',
+            port: 587,
             auth: {
-                user: 'gmail_user',
-                pass: 'gmail_pass'
+                user: 'info@sugarsandiego.com',
+                pass: 'f17VPLuDdNE5qp3TKmVtUw'
             }
         });
-
+        
         // NB! No need to recreate the transporter object. You can use
         // the same transporter object for all e-mails
 
         // setup e-mail data with unicode symbols
         var mailOptions = {
             from: params.name + '<' + params.email + '>', // sender address
-            to: 'justin@digitaluprisingdesign.com', // list of receivers
+            to: 'info@sugarsandiego.com', // list of receivers
             subject: params.name + ' submitted your sugarsandiego.com contact form.', // Subject line
             //text: params.message, // plaintext body
             html: params.message // html body

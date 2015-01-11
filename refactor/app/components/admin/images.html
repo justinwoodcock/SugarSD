@@ -1,0 +1,35 @@
+<div class="container" id="view-main">
+    <div id="alert-fixed" class="alert alert-{{alert.type}}" role="alert" ng-show="alert.show">
+        <span class="alert-message">{{alert.message}}</span>
+        <button type="button" class="close" ng-click="alert.show=false"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="row">
+        <!-- image management -->
+        <div class="col-xs-12">
+            <div class="admin-section">
+                <h1>Images</h1>
+                <p>Add new images by clicking the button below.</p>
+            </div>
+            <div class="admin-section">
+                <button class="btn btn-primary file-upload" ng-file-select="onFileSelect($files)" name="files" accept="image/*">Upload image</button>
+            </div>
+            <div class="admin-section">
+                <div id="sections-preview" class="admin-section" ng-show="true">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-4" ng-repeat="image in images">
+                            <div class="section-preview">
+                                <div class="title pull-left">{{image.filename.split('.')[0]}}</div>
+                                <span class="pull-right action-buttons">
+                                    <i ng-show="true" class="icon-link" ng-click="getLink(image)"></i>
+                                    <i ng-show="true" class="icon-trash" ng-click="deleteImage(image, $index)"></i>
+                                </span>
+                                <img ng-src="images/{{image.storedAs}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end image management -->
+    </div>
+</div>

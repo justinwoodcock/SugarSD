@@ -33,7 +33,7 @@ sugar.controller('SectionsController', ['$scope', 'parallaxHelper', 'SugarFactor
             })
             console.log($scope.services)
         };
-
+        
         $scope.selectCategory = function(category) {
             $scope.selectedCategory = category[0].category;
         }

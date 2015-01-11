@@ -1,0 +1,26 @@
+@mixin long-shadow ($scolor, $length) 
+    $list: ()
+    @for $i from 1 through $length 
+        $list: append($list, $scolor $i+px $i+px, comma)
+    text-shadow: $list
+
+@mixin border-radius ($bradius)   
+    -webkit-border-radius: $bradius
+    -moz-border-radius: $bradius
+    -ms-border-radius: $bradius
+    border-radius: $bradius
+
+@mixin placeholder
+    &::-webkit-input-placeholder
+        @content
+    &:-moz-placeholder
+        @content
+    &::-moz-placeholder
+        @content
+    &:-ms-input-placeholder
+        @content
+
+@mixin effect ($effect)
+    -webkit-animation-name: $effect
+    animation-name: $effect
+    
